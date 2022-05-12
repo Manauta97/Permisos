@@ -20,9 +20,8 @@
         public function index(){
             //Obtenemos los usuarios
             $usuarios = $this->usuarioModelo->obtenerUsuarios();
-
             $this->datos['usuarios'] = $usuarios;
-//print_r($this->datos['usuarios']);  
+            //print_r($this->datos['usuarios']);  
             $this->vista('inicios/admin',$this->datos);
             // $this->vista('usuarios/inicioVue',$this->datos);
         }

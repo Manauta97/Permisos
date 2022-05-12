@@ -1,14 +1,16 @@
 <?php require_once RUTA_APP.'/vistas/inc/header.php' ?>
+<h1>zona administrador</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Email</th>
                 <th>Teléfono</th>
                 <th>Rol</th>
-<?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1,20])):?>
+<?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
                 <th>Acciones</th>
 <?php endif ?>
             </tr>
@@ -18,9 +20,11 @@
                 <tr>
                     <td><?php echo $uruario->id_usuario ?></td>
                     <td><?php echo $uruario->nombre ?></td>
+                    <td><?php echo $uruario->apellidos ?></td>
                     <td><?php echo $uruario->email ?></td>
                     <td><?php echo $uruario->telefono ?></td>
                     <td><?php echo $uruario->id_rol ?></td>
+                    
 <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
                     <td>
                         <a href="<?php echo RUTA_URL?>/usuarios/editar/<?php echo $uruario->id_usuario ?>">Editar</a>
@@ -35,7 +39,7 @@
         </tbody>
     </table>
 
-<?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1,20])):?>
+<?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
     <div class="col text-center">
         <a class="btn btn-success" href="<?php echo RUTA_URL?>/usuarios/agregar/">+</a>
     </div>

@@ -16,7 +16,7 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a href="<?php echo RUTA_URL?>" class="navbar-brand"><?php echo NOMBRE_SITIO ?></a>
+            <a href="<?php echo RUTA_URL?>/inicios/admin" class="navbar-brand"><?php echo NOMBRE_SITIO ?></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -25,9 +25,9 @@
 <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
                     <li class="nav-item">
                         <?php if (isset($datos['menuActivo']) && $datos['menuActivo'] == 1 ): ?>
-                            <a class="nav-link active" aria-current="page" href="<?php echo RUTA_URL ?>/usuarios">Usuarios</a>
+                            <a class="nav-link active" aria-current="page" href="<?php echo RUTA_URL ?>/inicios/admin">Usuarios</a>
                         <?php else: ?>
-                            <a class="nav-link" aria-current="page" href="<?php echo RUTA_URL ?>/usuarios">Usuarios</a>
+                            <a class="nav-link" aria-current="page" href="<?php echo RUTA_URL ?>/inicios/admin">Usuarios</a>
                         <?php endif ?>
                     </li>
 <?php endif ?>

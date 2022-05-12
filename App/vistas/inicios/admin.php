@@ -6,6 +6,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Email</th>
                 <th>Teléfono</th>
                 <th>Rol</th>
@@ -19,6 +20,7 @@
                 <tr>
                     <td><?php echo $uruario->id_usuario ?></td>
                     <td><?php echo $uruario->nombre ?></td>
+                    <td><?php echo $uruario->apellidos ?></td>
                     <td><?php echo $uruario->email ?></td>
                     <td><?php echo $uruario->telefono ?></td>
                     <td><?php echo $uruario->id_rol ?></td>
