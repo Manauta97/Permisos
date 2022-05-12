@@ -4,7 +4,7 @@
 
         public function __construct(){
             Sesion::iniciarSesion($this->datos);
-            $this->datos['rolesPermitidos'] = [1,20];          // Definimos los roles que tendran acceso
+            $this->datos['rolesPermitidos'] = [1];          // Definimos los roles que tendran acceso
 
             if (!tienePrivilegios($this->datos['usuarioSesion']->id_rol,$this->datos['rolesPermitidos'])) {
                 redireccionar('/');
@@ -21,8 +21,16 @@
             //Obtenemos los usuarios
             $usuarios = $this->usuarioModelo->obtenerUsuarios();
             $this->datos['usuarios'] = $usuarios;
+            // $this->vista('inicios/admin',$this->datos);  
+
+            $permiso = $this->usuarioModelo->obtenerTipoPermiso();
+            $this->datos['tipoPermiso'] = $permiso;
+
+            
             $this->vista('inicios/admin',$this->datos);   
         }
+
+
 
 
         public function agregar(){
@@ -92,6 +100,36 @@
                 $this->datos['listaRoles'] = $this->usuarioModelo->obtenerRoles();
 
                 $this->vista('usuarios/agregar_editar',$this->datos);
+            }
+        }
+
+        public function editarPermiso($id){
+            $this->datos['rolesPermitidos'] = [1];          // Definimos los roles que tendran acceso
+
+            if (!tienePrivilegios($this->datos['usuarioSesion']->id_rol,$this->datos['rolesPermitidos'])) {
+                redireccionar('/usuarios');
+            }
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+                $PermisoModificado = [
+                    'idTipoPermiso' => $id,
+                    'descripcionPermiso' => trim($_POST['descripcion']),
+                    'codTipoPermiso' => trim($_POST['codtipo']),
+                    'foto' => trim($_POST['foto']),
+                ];
+
+                if ($this->permisoModelo->actualizarPermiso($permisoModificado)){
+                    redireccionar('/usuarios');
+                } else {
+                    die('Algo ha fallado!!!');
+                }
+            } else {
+                //obtenemos información del usuario y el listado de roles desde del modelo
+                $this->datos['tipoPermiso'] = $this->permisoModelo->obtenerPermisoId($id);
+                //$this->datos['listaRoles'] = $this->usuarioModelo->obtenerRoles();
+
+                $this->vista('usuarios/editpermiso',$this->datos);
             }
         }
 

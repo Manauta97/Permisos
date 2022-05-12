@@ -77,6 +77,37 @@
         </table>
     </div>
 
+<br> <br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Descripcion</th>
+            <th>Codigo tipo permiso </th>
+            <th>Foto</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($datos['tipoPermiso'] as $tpermiso): ?>
+            <tr>
+                <td><?php echo $tpermiso->idTipoPermiso ?></td>
+                <td><?php echo $tpermiso->descripcionPermiso ?></td>
+                <td><?php echo $tpermiso->codTipoPermiso ?></td>
+                <td><?php echo $tpermiso->foto ?></td>
+            </tr>
+            <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
+                <td>
+                    <a href="<?php echo RUTA_URL?>/usuarios/editpermiso/<?php echo $tpermiso->idTipoPermiso ?>">Editar</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="<?php echo RUTA_URL?>/usuarios/borrar/<?php echo $tpermiso->idTipoPermiso ?>">Borrar</a>
+                </td>
+        <?php endif ?>
+        <?php endforeach ?>
+    </tbody>
+    
+</table>    
+
 
 <script>
     function getSesiones(id_usuario){
