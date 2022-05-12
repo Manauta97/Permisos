@@ -36,6 +36,7 @@
                 
                 $usuarioNuevo = [
                     'nombre' => trim($_POST['nombre']),
+                    'apellidos' => trim($_POST['apellidos']),
                     'email' => trim($_POST['email']),
                     'telefono' => trim($_POST['telefono']),
                     'id_rol' => trim($_POST['rol']),
@@ -49,6 +50,7 @@
             } else {
                 $this->datos['usuario'] = (object) [
                     'nombre' => '',
+                    'apellidos' => '',
                     'email' => '',
                     'telefono' => '',
                     'id_rol' => 3
@@ -73,6 +75,7 @@
                 $usuarioModificado = [
                     'id_usuario' => $id,
                     'nombre' => trim($_POST['nombre']),
+                    'apellidos' => trim($_POST['apellidos']),
                     'email' => trim($_POST['email']),
                     'telefono' => trim($_POST['telefono']),
                     'id_rol' => trim($_POST['rol']),

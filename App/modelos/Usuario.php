@@ -23,11 +23,12 @@
 
 
         public function agregarUsuario($datos){
-            $this->db->query("INSERT INTO usuarios (nombre, email, telefono, id_rol) 
-                                        VALUES (:nombre, :email, :telefono, :id_rol)");
+            $this->db->query("INSERT INTO usuarios (nombre, apellidos, email, telefono, id_rol) 
+                                        VALUES (:nombre, :apellidos, :email, :telefono, :id_rol)");
 
             //vinculamos los valores
             $this->db->bind(':nombre',$datos['nombre']);
+            $this->db->bind(':apellidos',$datos['apellidos']);
             $this->db->bind(':email',$datos['email']);
             $this->db->bind(':telefono',$datos['telefono']);
             $this->db->bind(':id_rol',$datos['id_rol']);
@@ -50,12 +51,13 @@
 
 
         public function actualizarUsuario($datos){
-            $this->db->query("UPDATE usuarios SET nombre=:nombre, email=:email, telefono=:telefono, id_rol=:id_rol
+            $this->db->query("UPDATE usuarios SET nombre=:nombre, apellidos=:apellidos, email=:email, telefono=:telefono, id_rol=:id_rol
                                                 WHERE id_usuario = :id");
 
             //vinculamos los valores
             $this->db->bind(':id',$datos['id_usuario']);
             $this->db->bind(':nombre',$datos['nombre']);
+            $this->db->bind(':apellidos',$datos['apellidos']);
             $this->db->bind(':email',$datos['email']);
             $this->db->bind(':telefono',$datos['telefono']);
             $this->db->bind(':id_rol',$datos['id_rol']);

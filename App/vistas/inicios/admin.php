@@ -7,10 +7,12 @@
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>DNI</th>
-                <th>Centro</th>
-                <th>Especialidad</th>
-                <th>NRP</th>
+                <!--     
+                    <th>DNI</th>
+                    <th>Centro</th>
+                    <th>Especialidad</th>
+                    <th>NRP</th>
+                --> 
                 <th>Email</th>
                 <th>Teléfono</th>
                 <th>Rol</th>
@@ -25,10 +27,13 @@
                     <td><?php echo $uruario->id_usuario ?></td>
                     <td><?php echo $uruario->nombre ?></td>
                     <td><?php echo $uruario->apellidos ?></td>
-                    <td><?php echo $uruario->dni ?></td>
-                    <td><?php echo $uruario->centro ?></td>
-                    <td><?php echo $uruario->especialidad ?></td>
-                    <td><?php echo $uruario->nrp ?></td>
+
+                    <!--  
+                        <td><?php echo $uruario->dni ?></td>
+                        <td><?php echo $uruario->centro ?></td>
+                        <td><?php echo $uruario->especialidad ?></td>
+                        <td><?php echo $uruario->nrp ?></td>
+                    -->
                     <td><?php echo $uruario->email ?></td>
                     <td><?php echo $uruario->telefono ?></td>
                     <td><?php echo $uruario->id_rol ?></td>
