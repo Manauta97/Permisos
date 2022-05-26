@@ -30,6 +30,7 @@
                             <a class="nav-link" aria-current="page" href="<?php echo RUTA_URL ?>/inicios/admin">Usuarios</a>
                         <?php endif ?>
                     </li>
+                    
 <?php endif ?>
                 </ul>
                 <ul class="navbar-nav ms-auto mb-2 mb-md-0">

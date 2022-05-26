@@ -1,10 +1,11 @@
 <?php require_once RUTA_APP.'/vistas/inc/header.php' ?>
-<h1>zona administrador</h1>
+
+<h1 class="text-center mb-5 mt-5">Zona Administrador</h1>
 
     <table class="table table-responsive table-hover">
         <thead>
             <tr>
-                <th>Id</th>
+                <!--  <th>Id</th>-->
                 <th>Nombre</th>
                 <th>Apellido</th>
                    
@@ -24,7 +25,7 @@
         <tbody>
             <?php foreach($datos['usuarios'] as $uruario): ?>
                 <tr>
-                    <td><?php echo $uruario->id_usuario ?></td>
+                   <!--  <td><?php echo $uruario->id_usuario ?></td>-->
                     <td><?php echo $uruario->nombre ?></td>
                     <td><?php echo $uruario->apellidos ?></td>
 
@@ -36,7 +37,18 @@
                     
                     <td><?php echo $uruario->email ?></td>
                     <td><?php echo $uruario->telefono ?></td>
-                    <td><?php echo $uruario->id_rol ?></td>
+                    <td>
+                    <?php 
+                        if ($uruario->id_rol == 3) {
+                         echo ("Profesor");
+                        } elseif ($uruario->id_rol == 2) {
+                            echo ("Jefe de Estudios");
+                        } elseif ($uruario->id_rol == 1) {
+                            echo ("Administrador");
+                        }
+                    ?>
+                </td>
+                       
                     
 <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
                     <td>
@@ -54,7 +66,7 @@
 
 <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
     <div class="col text-center">
-        <a class="btn btn-success" href="<?php echo RUTA_URL?>/usuarios/agregar/">+</a>
+        <a class="btn btn-success" href="<?php echo RUTA_URL?>/usuarios/agregar/">Agregar Profesor</a>
     </div>
 
     <div class="container" id="listadoSesiones" style="display:none">
@@ -82,7 +94,7 @@
 <table class="table table-responsive table-hover">
     <thead>
         <tr>
-            <th>Id</th>
+            <!-- <th>Id</th> -->
             <th>Descripcion</th>
             <th>Codigo tipo permiso </th>
             <th>Foto</th>
@@ -95,11 +107,22 @@
     <tbody>
         <?php foreach($datos['tipoPermiso'] as $tpermiso): ?>
             <tr>
-                <td><?php echo $tpermiso->idTipoPermiso ?></td>
+               <!--   <td><?php echo $tpermiso->idTipoPermiso ?></td> -->
                 <td><?php echo $tpermiso->descripcionPermiso ?></td>
                 <td><?php echo $tpermiso->codTipoPermiso ?></td>
                 <td><?php echo $tpermiso->foto ?></td>
-                <td><?php echo $tpermiso->id_estado ?></td>
+                
+                <td>
+                    <?php 
+                        if ($tpermiso->id_estado == 3) {
+                         echo ("Pendiente");
+                        } elseif ($tpermiso->id_estado == 2) {
+                            echo ("Denegado");
+                        } elseif ($tpermiso->id_estado == 1) {
+                            echo ("Aceptado");
+                        }
+                    ?>
+                </td>
             
             <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
                 <td>
@@ -115,7 +138,7 @@
 </table>    
 <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
     <div class="col text-center">
-        <a class="btn btn-success" href="<?php echo RUTA_URL?>/usuarios/agregarPermisos/">+</a>
+        <a class="btn btn-success" href="<?php echo RUTA_URL?>/usuarios/agregarPermisos/">Agregar Permiso</a>
     </div>
 <?php endif ?>
 <script>
