@@ -8,7 +8,7 @@
 
         public function index($error = ''){
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $this->datos['usuarios'] = trim($_POST['email']);
+                $this->datos['usuarios'] = trim($_POST['dnisesion']);
                 //$this->datos['contra'] = trim($_POST['contra']);
             $usuarioSesion = $this->loginModelo->loginUsu($this->datos['usuarios']/*,$this->datos['contra']*/ );
                 if (isset($usuarioSesion) && !empty($usuarioSesion)){       // si tiene datos el objeto devuelto entramos

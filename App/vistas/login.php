@@ -9,8 +9,8 @@
 
   <form method="post" class="card-body">
     <div class="form-floating mb-3">
-      <input type="email" name="email" class="form-control" id="floatingInput" placeholder="" required>
-      <label for="floatingInput">Email</label>
+      <input type="text" name="dnisesion" class="form-control" id="dnisesion" placeholder="" required>
+      <label for="dnisesion">DNI</label>
     </div>
 
  <!--    <div class="form-floating mb-3">

@@ -224,7 +224,7 @@
 
         
         public function sesiones($id_usuario){
-            $this->datos['rolesPermitidos'] = [1,20];          // Definimos los roles que tendran acceso
+            $this->datos['rolesPermitidos'] = [1];          // Definimos los roles que tendran acceso
 
             if (!tienePrivilegios($this->datos['usuarioSesion']->id_rol,$this->datos['rolesPermitidos'])) {
                 exit();

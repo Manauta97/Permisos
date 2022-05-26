@@ -10,8 +10,8 @@
 
         public function loginUsu($usuario/*, $contra*/){
        
-            $this->db->query("SELECT * FROM usuarios WHERE email = :email" );
-            $this->db->bind(':email',$usuario);
+            $this->db->query("SELECT * FROM usuarios WHERE dni = :dni" );
+            $this->db->bind(':dni',$usuario);
             //$this->db->bind(':user_pass',$contra);
             return $this->db->registro();
         }
