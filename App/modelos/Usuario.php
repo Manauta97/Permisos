@@ -27,14 +27,24 @@
             return $this->db->registros();
         }
 
+        public function obtenerEstados(){
+            $this->db->query("SELECT * FROM estado");
+
+            return $this->db->registros();
+        }
+
 
         public function agregarUsuario($datos){
-            $this->db->query("INSERT INTO usuarios (nombre, apellidos, email, telefono, id_rol) 
-                                        VALUES (:nombre, :apellidos, :email, :telefono, :id_rol)");
+            $this->db->query("INSERT INTO usuarios (nombre, apellidos, dni, centro, especialidad, nrp, email, telefono, id_rol) 
+                                        VALUES (:nombre, :apellidos, :dni, :centro, :especialidad, :nrp, :email, :telefono, :id_rol)");
 
             //vinculamos los valores
             $this->db->bind(':nombre',$datos['nombre']);
             $this->db->bind(':apellidos',$datos['apellidos']);
+            $this->db->bind(':dni',$datos['dni']);
+            $this->db->bind(':centro',$datos['centro']);
+            $this->db->bind(':especialidad',$datos['especialidad']);
+            $this->db->bind(':nrp',$datos['nrp']);
             $this->db->bind(':email',$datos['email']);
             $this->db->bind(':telefono',$datos['telefono']);
             $this->db->bind(':id_rol',$datos['id_rol']);
@@ -47,6 +57,24 @@
             }
         }
 
+        public function agregarPermiso($datos){
+            $this->db->query("INSERT INTO tipoPermiso (descripcionPermiso, codTipoPermiso, foto, id_estado) 
+                                        VALUES (:descripcionPermiso, :codTipoPermiso, :foto, :idEstado)");
+
+            //vinculamos los valores
+            
+            $this->db->bind(':descripcionPermiso',$datos['descripcionPermiso']);
+            $this->db->bind(':codTipoPermiso',$datos['codTipoPermiso']);
+            $this->db->bind(':foto',$datos['foto']);
+            $this->db->bind(':idEstado',$datos['id_estado']);
+
+            //ejecutamos
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
 
         public function obtenerUsuarioId($id){
             $this->db->query("SELECT * FROM usuarios WHERE id_usuario = :id");
@@ -63,6 +91,35 @@
         }
 
         //cambiar el where!!!!
+        
+
+        
+        public function actualizarUsuario($datos){
+            $this->db->query("UPDATE usuarios SET nombre=:nombre, apellidos=:apellidos, dni=:dni, centro=:centro, especialidad=:especialidad, nrp=:nrp, email=:email, telefono=:telefono, id_rol=:id_rol
+                                                WHERE id_usuario = :id");
+
+            //vinculamos los valores
+            $this->db->bind(':id',$datos['id_usuario']);
+            $this->db->bind(':nombre',$datos['nombre']);
+            $this->db->bind(':apellidos',$datos['apellidos']);
+
+            $this->db->bind(':dni',$datos['dni']);
+            $this->db->bind(':centro',$datos['centro']);
+            $this->db->bind(':especialidad',$datos['especialidad']);
+            $this->db->bind(':nrp',$datos['nrp']);
+
+            $this->db->bind(':email',$datos['email']);
+            $this->db->bind(':telefono',$datos['telefono']);
+            $this->db->bind(':id_rol',$datos['id_rol']);
+
+            //ejecutamos
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
         public function actualizarPermiso($datos){
             $this->db->query("UPDATE tipoPermiso SET descripcionPermiso=:descripcionPermiso, codTipoPermiso=:codTipoPermiso, foto=:foto
                                                 WHERE idTipoPermiso = :id"); //cambiar el where!!!!
@@ -81,20 +138,11 @@
             }
         }
 
-        
-        public function actualizarUsuario($datos){
-            $this->db->query("UPDATE usuarios SET nombre=:nombre, apellidos=:apellidos, email=:email, telefono=:telefono, id_rol=:id_rol
-                                                WHERE id_usuario = :id");
 
-            //vinculamos los valores
-            $this->db->bind(':id',$datos['id_usuario']);
-            $this->db->bind(':nombre',$datos['nombre']);
-            $this->db->bind(':apellidos',$datos['apellidos']);
-            $this->db->bind(':email',$datos['email']);
-            $this->db->bind(':telefono',$datos['telefono']);
-            $this->db->bind(':id_rol',$datos['id_rol']);
+        public function borrarUsuario($id){
+            $this->db->query("DELETE FROM usuarios WHERE id_usuario = :id");
+            $this->db->bind(':id',$id);
 
-            //ejecutamos
             if($this->db->execute()){
                 return true;
             } else {
@@ -102,9 +150,8 @@
             }
         }
 
-
-        public function borrarUsuario($id){
-            $this->db->query("DELETE FROM usuarios WHERE id_usuario = :id");
+        public function borrarPermiso($id){
+            $this->db->query("DELETE FROM tipoPermiso WHERE idTipoPermiso = :id");
             $this->db->bind(':id',$id);
 
             if($this->db->execute()){

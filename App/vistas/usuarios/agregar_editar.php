@@ -19,9 +19,30 @@
             <input type="text" name="nombre" id="nombre" class="form-control form-control-lg" value="<?php echo $datos['usuario']->nombre ?>">
         </div>
         <div class="mt-3 mb-3">
-            <label for="nombre">Apellido: <sup>*</sup></label>
+            <label for="apellidos">Apellido: <sup>*</sup></label>
             <input type="text" name="apellidos" id="apellidos" class="form-control form-control-lg" value="<?php echo $datos['usuario']->apellidos ?>">
         </div>
+
+
+        <div class="mt-3 mb-3">
+            <label for="apellidos">dni: <sup>*</sup></label>
+            <input type="text" name="dni" id="dni" class="form-control form-control-lg" value="<?php echo $datos['usuario']->dni ?>">
+        </div>
+        <div class="mt-3 mb-3">
+            <label for="centro">centro: <sup>*</sup></label>
+            <input type="text" name="centro" id="centro" class="form-control form-control-lg" value="<?php echo $datos['usuario']->centro ?>">
+        </div>
+        <div class="mt-3 mb-3">
+            <label for="especialidad">especialidad: <sup>*</sup></label>
+            <input type="text" name="especialidad" id="especialidad" class="form-control form-control-lg" value="<?php echo $datos['usuario']->especialidad ?>">
+        </div>
+        <div class="mt-3 mb-3">
+            <label for="nrp">nrp: <sup>*</sup></label>
+            <input type="text" name="nrp" id="nrp" class="form-control form-control-lg" value="<?php echo $datos['usuario']->nrp ?>">
+        </div>
+
+
+
         <div class="mb-3">
             <label for="email">Email: <sup>*</sup></label>
             <input type="email" name="email" id="email" class="form-control form-control-lg" value="<?php echo $datos['usuario']->email ?>">

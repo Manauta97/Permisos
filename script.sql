@@ -45,13 +45,22 @@ INSERT INTO `roles` (`id_rol`, `rol`) VALUES
 (3, 'Profesor');
 
 -- --------------------------------------------------------
+create table estado (
+	id_estado int(11) NOT NULL,
+	nombreEstado varchar(15) NOT NULL,
+    primary key (id_estado)
+);
 
+INSERT INTO `estado` (`id_estado`, `nombreEstado`) VALUES
+(1, 'Aceptado'),
+(2, 'Denegado'),
+(3, 'Pediente');
 --
 -- Estructura de tabla para la tabla `sesiones`
 --
 
 CREATE TABLE `sesiones` (
-  `id_sesion` varchar(40) NOT NULL,
+  `id_sesion` varchar(40) NOT NULL, 
   `id_usuario` int(11) NOT NULL,
   `fecha_inicio` datetime NOT NULL,
   `fecha_fin` datetime DEFAULT NULL
@@ -72,18 +81,23 @@ INSERT INTO `sesiones` (`id_sesion`, `id_usuario`, `fecha_inicio`, `fecha_fin`) 
 
 
 -- --------------------------------------------------------
+
+
 create table tipoPermiso(
 	idTipoPermiso int,
     descripcionPermiso varchar(200),
     codTipoPermiso varchar(3),
-    foto varchar(500)
+    foto varchar(500),
+    id_estado int(11),
+    primary key (idTipoPermiso),
+    FOREIGN KEY (id_estado) REFERENCES estado(id_estado)
 );
 
 
-insert into tipoPermiso (idTipoPermiso,descripcionPermiso,codTipoPermiso,foto) values
-('7', 'Lactancia de hijo menor de 12 meses - 1 hora o fraccionada', 'A01', 'carpeta/ruta/foto1'),
-('2', 'Fallecimiento de familiar de primer grado', 'A03', 'carpeta/ruta/foto2'),
-('3', 'Formación continua', 'A06', 'carpeta/ruta/foto3');
+insert into tipoPermiso (idTipoPermiso,descripcionPermiso,codTipoPermiso,foto, id_estado) values
+('1', 'Lactancia de hijo menor de 12 meses - 1 hora o fraccionada', 'A01', 'carpeta/ruta/foto1', '3'),
+('2', 'Fallecimiento de familiar de primer grado', 'A03', 'carpeta/ruta/foto2','3'),
+('3', 'Formación continua', 'A06', 'carpeta/ruta/foto3','3');
 --
 -- Estructura de tabla para la tabla `usuarios`
 --
@@ -98,7 +112,7 @@ CREATE TABLE `usuarios` (
   `nrp` varchar(100) NOT NULL,*/
   `email` varchar(120) NOT NULL,
   `telefono` varchar(20) NOT NULL,
-  `id_rol` int(11) NOT NULL
+  `id_rol` int(11) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -125,7 +139,7 @@ ALTER TABLE `sesiones`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
-
+  
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
@@ -134,7 +148,11 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+COMMIT;
+
+ALTER TABLE `tipoPermiso`
+  MODIFY `idTipoPermiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

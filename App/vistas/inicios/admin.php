@@ -1,18 +1,18 @@
 <?php require_once RUTA_APP.'/vistas/inc/header.php' ?>
 <h1>zona administrador</h1>
 
-    <table class="table">
+    <table class="table table-responsive table-hover">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <!--     
+                   
                     <th>DNI</th>
                     <th>Centro</th>
                     <th>Especialidad</th>
                     <th>NRP</th>
-                --> 
+                
                 <th>Email</th>
                 <th>Teléfono</th>
                 <th>Rol</th>
@@ -28,12 +28,12 @@
                     <td><?php echo $uruario->nombre ?></td>
                     <td><?php echo $uruario->apellidos ?></td>
 
-                    <!--  
+                     
                         <td><?php echo $uruario->dni ?></td>
                         <td><?php echo $uruario->centro ?></td>
                         <td><?php echo $uruario->especialidad ?></td>
                         <td><?php echo $uruario->nrp ?></td>
-                    -->
+                    
                     <td><?php echo $uruario->email ?></td>
                     <td><?php echo $uruario->telefono ?></td>
                     <td><?php echo $uruario->id_rol ?></td>
@@ -44,7 +44,7 @@
                         &nbsp;&nbsp;&nbsp;
                         <a href="<?php echo RUTA_URL?>/usuarios/borrar/<?php echo $uruario->id_usuario ?>">Borrar</a>
                         &nbsp;&nbsp;&nbsp;
-                        <a href="javascript:getSesiones(<?php echo $uruario->id_usuario ?>)">Sesiones</a>
+                       <!--   <a href="javascript:getSesiones(<?php echo $uruario->id_usuario ?>)">Sesiones</a>-->
                     </td>
 <?php endif ?>
                 </tr>
@@ -67,7 +67,7 @@
                 <th scope="col">id_usuario</th>
                 <th scope="col">fecha_inicio</th>
                 <th scope="col">fecha_fin</th>
-                <th scope="col">estado</th>
+                
                 </tr>
             </thead>
             <tbody id="tbodyTablaSesiones">
@@ -79,13 +79,17 @@
 
 <br> <br>
 
-<table class="table">
+<table class="table table-responsive table-hover">
     <thead>
         <tr>
             <th>Id</th>
             <th>Descripcion</th>
             <th>Codigo tipo permiso </th>
             <th>Foto</th>
+            <th>Estado</th>
+            <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
+                <th>Acciones</th>
+            <?php endif ?>
         </tr>
     </thead>
     <tbody>
@@ -95,20 +99,25 @@
                 <td><?php echo $tpermiso->descripcionPermiso ?></td>
                 <td><?php echo $tpermiso->codTipoPermiso ?></td>
                 <td><?php echo $tpermiso->foto ?></td>
-            </tr>
+                <td><?php echo $tpermiso->id_estado ?></td>
+            
             <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
                 <td>
-                    <a href="<?php echo RUTA_URL?>/usuarios/editpermiso/<?php echo $tpermiso->idTipoPermiso ?>">Editar</a>
+                    <a href="<?php echo RUTA_URL?>/usuarios/editarPermiso/<?php echo $tpermiso->idTipoPermiso ?>">Editar</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a href="<?php echo RUTA_URL?>/usuarios/borrar/<?php echo $tpermiso->idTipoPermiso ?>">Borrar</a>
+                    <a href="<?php echo RUTA_URL?>/usuarios/borrarP/<?php echo $tpermiso->idTipoPermiso ?>">Borrar</a>
                 </td>
         <?php endif ?>
         <?php endforeach ?>
+        </tr>
     </tbody>
     
 </table>    
-
-
+<?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
+    <div class="col text-center">
+        <a class="btn btn-success" href="<?php echo RUTA_URL?>/usuarios/agregarPermisos/">+</a>
+    </div>
+<?php endif ?>
 <script>
     function getSesiones(id_usuario){
         fetch('<?php echo RUTA_URL?>/usuarios/sesiones/'+id_usuario, {

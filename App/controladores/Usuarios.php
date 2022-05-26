@@ -45,6 +45,12 @@
                 $usuarioNuevo = [
                     'nombre' => trim($_POST['nombre']),
                     'apellidos' => trim($_POST['apellidos']),
+
+                    'dni' => trim($_POST['dni']),
+                    'centro' => trim($_POST['centro']),
+                    'especialidad' => trim($_POST['especialidad']),
+                    'nrp' => trim($_POST['nrp']),
+
                     'email' => trim($_POST['email']),
                     'telefono' => trim($_POST['telefono']),
                     'id_rol' => trim($_POST['rol']),
@@ -59,6 +65,12 @@
                 $this->datos['usuario'] = (object) [
                     'nombre' => '',
                     'apellidos' => '',
+
+                    'dni' => '',
+                    'centro' => '',
+                    'especialidad' => '',
+                    'nrp' => '',
+
                     'email' => '',
                     'telefono' => '',
                     'id_rol' => 3
@@ -68,6 +80,42 @@
 
                 $this->vista('usuarios/agregar_editar',$this->datos);
             }
+        }
+
+        public function agregarPermisos(){
+            $this->datos['rolesPermitidos'] = [1];   
+
+            if (!tienePrivilegios($this->datos['usuarioSesion']->id_rol,$this->datos['rolesPermitidos'])) {
+                redireccionar('/usuarios');
+            }
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                
+                $permisoNuevo = [
+                    'descripcionPermiso' => trim($_POST['descripcion']),
+                    'codTipoPermiso' => trim($_POST['codtipo']),
+                    'foto' => trim($_POST['rutafoto']),
+                    'id_estado' => 3,
+                ];
+
+                if ($this->usuarioModelo->agregarPermiso($permisoNuevo)){
+                    redireccionar('/usuarios');
+                } else {
+                    die('Algo ha fallado!!!');
+                }
+            } else {
+                $this->datos['usuario'] = (object) [
+                    'descripcionPermiso' => '',
+                    'codTipoPermiso' => '',
+                    'foto' => '',
+                    'id_estado' => 3
+                ];
+
+                $this->datos['listaestado'] = $this->usuarioModelo->obtenerEstados();
+
+                $this->vista('usuarios/agregarPermiso',$this->datos);
+            }
+
         }
 
 
@@ -84,6 +132,12 @@
                     'id_usuario' => $id,
                     'nombre' => trim($_POST['nombre']),
                     'apellidos' => trim($_POST['apellidos']),
+                    
+                    'dni' => trim($_POST['dni']),
+                    'centro' => trim($_POST['centro']),
+                    'especialidad' => trim($_POST['especialidad']),
+                    'nrp' => trim($_POST['nrp']),
+
                     'email' => trim($_POST['email']),
                     'telefono' => trim($_POST['telefono']),
                     'id_rol' => trim($_POST['rol']),
@@ -112,21 +166,23 @@
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-                $PermisoModificado = [
+                $permisoModificado = [
                     'idTipoPermiso' => $id,
                     'descripcionPermiso' => trim($_POST['descripcion']),
                     'codTipoPermiso' => trim($_POST['codtipo']),
-                    'foto' => trim($_POST['foto']),
+                    'foto' => trim($_POST['rutafoto']),
                 ];
 
-                if ($this->permisoModelo->actualizarPermiso($permisoModificado)){
+                if ($this->usuarioModelo->actualizarPermiso($permisoModificado)){
                     redireccionar('/usuarios');
                 } else {
                     die('Algo ha fallado!!!');
                 }
             } else {
-                //obtenemos información del usuario y el listado de roles desde del modelo
-                $this->datos['tipoPermiso'] = $this->permisoModelo->obtenerPermisoId($id);
+                //obtenemos información del permiso y el listado de roles desde del modelo
+                
+                $this->datos['tipoPermiso'] = $this->usuarioModelo->obtenerPermisoId($id);
+
                 //$this->datos['listaRoles'] = $this->usuarioModelo->obtenerRoles();
 
                 $this->vista('usuarios/editpermiso',$this->datos);
@@ -147,6 +203,22 @@
                 $this->datos['usuario'] = $this->usuarioModelo->obtenerUsuarioId($id);
 
                 $this->vista('usuarios/borrar',$this->datos);
+            }
+        }
+
+        public function borrarP($id){
+            
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if ($this->usuarioModelo->borrarPermiso($id)){
+                    redireccionar('/usuarios');
+                } else {
+                    die('Algo ha fallado!!!');
+                }
+            } else {
+                //obtenemos información del usuario desde del modelo
+                $this->datos['tipoPermiso'] = $this->usuarioModelo->obtenerPermisoId($id);
+
+                $this->vista('usuarios/borrarPermiso',$this->datos);
             }
         }
 
