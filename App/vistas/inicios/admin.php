@@ -14,8 +14,7 @@
                     <th>Especialidad</th>
                     <th>NRP</th>
                 
-                <th>Email</th>
-                <th>Teléfono</th>
+                <th>Localidad</th>
                 <th>Rol</th>
 <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
                 <th>Acciones</th>
@@ -35,8 +34,7 @@
                         <td><?php echo $uruario->especialidad ?></td>
                         <td><?php echo $uruario->nrp ?></td>
                     
-                    <td><?php echo $uruario->email ?></td>
-                    <td><?php echo $uruario->telefono ?></td>
+                    <td><?php echo $uruario->localidad ?></td>
                     <td>
                     <?php 
                         if ($uruario->id_rol == 3) {
@@ -97,8 +95,7 @@
             <!-- <th>Id</th> -->
             <th>Descripcion</th>
             <th>Codigo tipo permiso </th>
-            <th>Foto</th>
-            <th>Estado</th>
+        
             <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
                 <th>Acciones</th>
             <?php endif ?>
@@ -110,20 +107,7 @@
                <!--   <td><?php echo $tpermiso->idTipoPermiso ?></td> -->
                 <td><?php echo $tpermiso->descripcionPermiso ?></td>
                 <td><?php echo $tpermiso->codTipoPermiso ?></td>
-                <td><?php echo $tpermiso->foto ?></td>
-                
-                <td>
-                    <?php 
-                        if ($tpermiso->id_estado == 3) {
-                         echo ("Pendiente");
-                        } elseif ($tpermiso->id_estado == 2) {
-                            echo ("Denegado");
-                        } elseif ($tpermiso->id_estado == 1) {
-                            echo ("Aceptado");
-                        }
-                    ?>
-                </td>
-            
+
             <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
                 <td>
                     <a href="<?php echo RUTA_URL?>/usuarios/editarPermiso/<?php echo $tpermiso->idTipoPermiso ?>">Editar</a>

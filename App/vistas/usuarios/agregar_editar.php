@@ -41,16 +41,11 @@
             <input type="text" name="nrp" id="nrp" class="form-control form-control-lg" value="<?php echo $datos['usuario']->nrp ?>">
         </div>
 
-
-
         <div class="mb-3">
-            <label for="email">Email: <sup>*</sup></label>
-            <input type="email" name="email" id="email" class="form-control form-control-lg" value="<?php echo $datos['usuario']->email ?>">
+            <label for="localidad">Localidad: <sup>*</sup></label>
+            <input type="text" name="localidad" id="localidad" class="form-control form-control-lg" value="<?php echo $datos['usuario']->localidad ?>">
         </div>
-        <div class="mb-3">
-            <label for="telefono">Teléfono: <sup>*</sup></label>
-            <input type="text" name="telefono" id="telefono" class="form-control form-control-lg" value="<?php echo $datos['usuario']->telefono ?>">
-        </div>
+        
         <div class="mb-3">
             <label for="rol">Rol: <sup>*</sup></label>
             <select name="rol" id="rol" class="form-select form-select-lg">

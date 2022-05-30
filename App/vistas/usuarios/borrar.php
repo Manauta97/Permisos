@@ -11,12 +11,12 @@
             <input type="text" name="nombre" id="nombre" class="form-control form-control-lg" value="<?php echo $datos['usuario']->nombre ?>" disabled>
         </div>
         <div class="mb-3">
-            <label for="email">Email: <sup>*</sup></label>
-            <input type="email" name="email" id="email" class="form-control form-control-lg" value="<?php echo $datos['usuario']->email ?>" disabled>
+            <label for="apellidos">Apellidos: <sup>*</sup></label>
+            <input type="text" name="apellidos" id="apellidos" class="form-control form-control-lg" value="<?php echo $datos['usuario']->apellidos ?>" disabled>
         </div>
         <div class="mb-3">
-            <label for="telefono">Teléfono: <sup>*</sup></label>
-            <input type="text" name="telefono" id="telefono" class="form-control form-control-lg" value="<?php echo $datos['usuario']->telefono ?>" disabled>
+            <label for="dni">Dni: <sup>*</sup></label>
+            <input type="text" name="dni" id="dni" class="form-control form-control-lg" value="<?php echo $datos['usuario']->dni ?>" disabled>
         </div>
         <input type="submit" class="btn btn-success" value="Borrar Usuario">
     </form>

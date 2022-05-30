@@ -31,8 +31,6 @@
         }
 
 
-
-
         public function agregar(){
             $this->datos['rolesPermitidos'] = [1];          // Definimos los roles que tendran acceso
 
@@ -51,8 +49,8 @@
                     'especialidad' => trim($_POST['especialidad']),
                     'nrp' => trim($_POST['nrp']),
 
-                    'email' => trim($_POST['email']),
-                    'telefono' => trim($_POST['telefono']),
+                    'localidad' => trim($_POST['localidad']),
+                    
                     'id_rol' => trim($_POST['rol']),
                 ];
 
@@ -71,8 +69,8 @@
                     'especialidad' => '',
                     'nrp' => '',
 
-                    'email' => '',
-                    'telefono' => '',
+                    'localidad' => '',
+                
                     'id_rol' => 3
                 ];
 
@@ -94,8 +92,7 @@
                 $permisoNuevo = [
                     'descripcionPermiso' => trim($_POST['descripcion']),
                     'codTipoPermiso' => trim($_POST['codtipo']),
-                    'foto' => trim($_POST['rutafoto']),
-                    'id_estado' => 3,
+
                 ];
 
                 if ($this->usuarioModelo->agregarPermiso($permisoNuevo)){
@@ -107,8 +104,7 @@
                 $this->datos['usuario'] = (object) [
                     'descripcionPermiso' => '',
                     'codTipoPermiso' => '',
-                    'foto' => '',
-                    'id_estado' => 3
+
                 ];
 
                 $this->datos['listaestado'] = $this->usuarioModelo->obtenerEstados();
@@ -138,8 +134,7 @@
                     'especialidad' => trim($_POST['especialidad']),
                     'nrp' => trim($_POST['nrp']),
 
-                    'email' => trim($_POST['email']),
-                    'telefono' => trim($_POST['telefono']),
+                    'localidad' => trim($_POST['localidad']),
                     'id_rol' => trim($_POST['rol']),
                 ];
 

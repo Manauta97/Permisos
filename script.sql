@@ -1,6 +1,7 @@
 drop schema if exists crud_mvc;
 create schema crud_mvc;
 use crud_mvc;
+
 -- phpMyAdmin SQL Dump
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
@@ -106,10 +107,10 @@ CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellidos` varchar(100) NOT NULL,
-  /*`dni` varchar(9) NOT NULL,
+  `dni` varchar(9) NOT NULL,
   `centro` varchar(150) NULL,
   `especialidad` varchar(100) NULL,
-  `nrp` varchar(100) NOT NULL,*/
+  `nrp` varchar(100) NOT NULL,
   `email` varchar(120) NOT NULL,
   `telefono` varchar(20) NOT NULL,
   `id_rol` int(11) 
@@ -119,10 +120,10 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nombre`,`apellidos`,/*`dni`,`centro`,`especialidad`,`nrp`,*/ `email`, `telefono`, `id_rol`) VALUES
-(1, 'Marta', 'Garcia', /*'217488214E', 'CPIFP Bajo Aragón', 'Informatica', '222',*/ 'mgarciaf@cpifpbajoaragon.com', '634667435', 2),
-(2, 'Fede', 'Perez', /*'217488214F', 'CPIFP Bajo Aragón', 'Informatica', '333',*/ 'feder@gmail.com', '653466745', 3),
-(3, 'Jonatan', 'Segurana', /*'215778214G', 'CPIFP Bajo Aragón', 'Informatica', '254',*/ 'jsegurana@cpifpbajoparagon.com','688469745', 1);
+INSERT INTO `usuarios` (`id_usuario`, `nombre`,`apellidos`,`dni`,`centro`,`especialidad`,`nrp`, `email`, `telefono`, `id_rol`) VALUES
+(1, 'Marta', 'Garcia', '21748821E', 'CPIFP Bajo Aragón', 'Informatica', '222', 'mgarciaf@cpifpbajoaragon.com', '634667435', 2),
+(2, 'Fede', 'Perez', '21748821F', 'CPIFP Bajo Aragón', 'Informatica', '333', 'feder@gmail.com', '653466745', 3),
+(3, 'Jonatan', 'Segurana', '21577821G', 'CPIFP Bajo Aragón', 'Informatica', '254', 'jsegurana@cpifpbajoparagon.com','688469745', 1);
 
 --
 -- Índices para tablas volcadas

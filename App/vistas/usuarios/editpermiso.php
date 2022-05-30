@@ -14,10 +14,6 @@
             <label for="codtipo">Codigo: <sup>*</sup></label>
             <input type="text" name="codtipo" id="codtipo" class="form-control form-control-lg" value="<?php echo $datos['tipoPermiso']->codTipoPermiso ?>">
         </div>
-        <div class="mb-3">
-            <label for="rutafoto">Foto: <sup>*</sup></label>
-            <input type="text" name="rutafoto" id="rutafoto" class="form-control form-control-lg" value="<?php echo $datos['tipoPermiso']->foto ?>">
-        </div>
        
         <input type="submit" class="btn btn-success" value="Editar">
     </form>
