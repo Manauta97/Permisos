@@ -18,7 +18,7 @@
             //Obtenemos los usuarios
             
             $SolicitudPermisos = $this->jefeEstudioModelo->obtenerPermisosUsuario();
-            print_r($SolicitudPermisos);
+           
             $this->datos['tipoPermiso_has_usuario'] = $SolicitudPermisos;
             
             $this->vista('inicios/jefeEstudios',$this->datos);   
