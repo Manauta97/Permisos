@@ -12,7 +12,7 @@
                 if ($this->datos['usuarioSesion']->id_rol==1) {
                     redireccionar('/usuarios/obtenerUsuarios');
                 }elseif ($this->datos['usuarioSesion']->id_rol==2){
-                    $this->vista('inicios/jefeEstudios',$this->datos);
+                    redireccionar('/jefeEstudios/obtenerPermisosUsuario');
                 }elseif ($this->datos['usuarioSesion']->id_rol==3){
                     $this->vista('inicios/profesor',$this->datos);
                 }

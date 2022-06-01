@@ -38,7 +38,7 @@
                     <td>
                     <?php 
                         if ($uruario->id_rol == 3) {
-                         echo ("Profesor");
+                            echo ("Profesor");
                         } elseif ($uruario->id_rol == 2) {
                             echo ("Jefe de Estudios");
                         } elseif ($uruario->id_rol == 1) {
