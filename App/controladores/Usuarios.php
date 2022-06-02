@@ -16,7 +16,6 @@
             
         }
 
-
         public function index(){
             //Obtenemos los usuarios
             $usuarios = $this->usuarioModelo->obtenerUsuarios();
@@ -165,7 +164,6 @@
                     'idTipoPermiso' => $id,
                     'descripcionPermiso' => trim($_POST['descripcion']),
                     'codTipoPermiso' => trim($_POST['codtipo']),
-                    'foto' => trim($_POST['rutafoto']),
                 ];
 
                 if ($this->usuarioModelo->actualizarPermiso($permisoModificado)){

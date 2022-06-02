@@ -28,7 +28,7 @@
         }
 
         public function obtenerEstados(){
-            $this->db->query("SELECT * FROM estado");
+            $this->db->query("SELECT * FROM estados");
 
             return $this->db->registros();
         }
@@ -42,7 +42,7 @@
             $this->db->bind(':nombre',$datos['nombre']);
             $this->db->bind(':apellidos',$datos['apellidos']);
             $this->db->bind(':dni',$datos['dni']);
-            $this->db->bind(':centro',$datos['centro']);
+            $this->db->bind(':centro',strtoupper($datos['centro']));
             $this->db->bind(':especialidad',$datos['especialidad']);
             $this->db->bind(':nrp',$datos['nrp']);
             $this->db->bind(':localidad',$datos['localidad']);
@@ -51,10 +51,10 @@
 
             //ejecutamos
             if($this->db->execute()){
-                return true;
-            } else {
-                return false;
-            }
+                 return true;
+             } else {
+                 return false;
+             }
         }
 
         public function agregarPermiso($datos){

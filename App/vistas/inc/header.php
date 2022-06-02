@@ -36,6 +36,7 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                     <li class="navbar-text">
                         <?php echo $datos['usuarioSesion']->nombre ?>
+                        <?php echo $datos['usuarioSesion']->centro ?>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="<?php echo RUTA_URL ?>/login/logout">LogOut</a>

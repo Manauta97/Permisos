@@ -6,6 +6,7 @@
     <table class="table table-responsive table-hover">
         <thead>
             <tr>
+               <th>id</th>
                 <th>Descripcion Permiso</th>
                 <th>Profesor Solicitante</th>
                 <th>Documento</th>
@@ -21,9 +22,10 @@
             <?php foreach($datos['tipoPermiso_has_usuario'] as $permisoUsu): ?>
                 
                 <tr>
-                   
+                <td><?php echo $permisoUsu->idPermisoUsuario ?></td>
                     <td><?php echo $permisoUsu->descripcionPermiso ?></td>
                     <td><?php echo $permisoUsu->nombre ." " . $permisoUsu->apellidos?></td>
+                    
                     <td><?php echo $permisoUsu->nombreDocumento ?></td>
                     <td><?php echo $permisoUsu->fechaInicio ?></td>
                     <td><?php echo $permisoUsu->fechaFin ?></td>
@@ -31,11 +33,10 @@
        
                 <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[2])):?>
                         <td>
-                            <a href="<?php echo RUTA_URL?>/usuarios/editar/<?php echo $uruario->id_usuario ?>">Aceptar</a>
+                            <a href="<?php echo RUTA_URL?>/JefeEstudios/aceptarPermiso/<?php echo $permisoUsu->idPermisoUsuario ?>">Aceptar</a>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="<?php echo RUTA_URL?>/usuarios/borrar/<?php echo $uruario->id_usuario ?>">Denegar</a>
+                            <a href="<?php echo RUTA_URL?>/JefeEstudios/denegarPermiso/<?php echo $permisoUsu->idPermisoUsuario ?>">Denegar</a>
                             &nbsp;&nbsp;&nbsp;
-                        <!--   <a href="javascript:getSesiones(<?php echo $uruario->id_usuario ?>)">Sesiones</a>-->
                         </td>
                 <?php endif ?>
                 </tr>
