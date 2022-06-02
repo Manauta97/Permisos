@@ -37,16 +37,14 @@
         public function agregarUsuario($datos){
             $this->db->query("INSERT INTO usuarios (nombre, apellidos, dni, centro, especialidad, nrp, localidad, id_rol) 
                                         VALUES (:nombre, :apellidos, :dni, :centro, :especialidad, :nrp, :localidad, :id_rol)");
-
             //vinculamos los valores
             $this->db->bind(':nombre',$datos['nombre']);
             $this->db->bind(':apellidos',$datos['apellidos']);
             $this->db->bind(':dni',$datos['dni']);
-            $this->db->bind(':centro',strtoupper($datos['centro']));
+            $this->db->bind(':centro',strtolower($datos['centro']));
             $this->db->bind(':especialidad',$datos['especialidad']);
             $this->db->bind(':nrp',$datos['nrp']);
             $this->db->bind(':localidad',$datos['localidad']);
-
             $this->db->bind(':id_rol',$datos['id_rol']);
 
             //ejecutamos
@@ -90,8 +88,6 @@
 
         //cambiar el where!!!!
         
-
-        
         public function actualizarUsuario($datos){
             $this->db->query("UPDATE usuarios SET nombre=:nombre, apellidos=:apellidos, dni=:dni, centro=:centro, especialidad=:especialidad, nrp=:nrp, localidad=:localidad, id_rol=:id_rol
                                                 WHERE id_usuario = :id");
@@ -102,7 +98,7 @@
             $this->db->bind(':apellidos',$datos['apellidos']);
 
             $this->db->bind(':dni',$datos['dni']);
-            $this->db->bind(':centro',$datos['centro']);
+            $this->db->bind(':centro',strtolower($datos['centro']));
             $this->db->bind(':especialidad',$datos['especialidad']);
             $this->db->bind(':nrp',$datos['nrp']);
 

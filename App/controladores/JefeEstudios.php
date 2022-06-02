@@ -23,6 +23,7 @@
             
             $this->vista('inicios/jefeEstudios',$this->datos);   
         }
+        
 
         public function aceptarPermiso($usuarioPermiso){
             $this->datos['rolesPermitidos'] = [2];

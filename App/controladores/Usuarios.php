@@ -42,14 +42,11 @@
                 $usuarioNuevo = [
                     'nombre' => trim($_POST['nombre']),
                     'apellidos' => trim($_POST['apellidos']),
-
                     'dni' => trim($_POST['dni']),
                     'centro' => trim($_POST['centro']),
                     'especialidad' => trim($_POST['especialidad']),
                     'nrp' => trim($_POST['nrp']),
-
                     'localidad' => trim($_POST['localidad']),
-                    
                     'id_rol' => trim($_POST['rol']),
                 ];
 
@@ -91,7 +88,6 @@
                 $permisoNuevo = [
                     'descripcionPermiso' => trim($_POST['descripcion']),
                     'codTipoPermiso' => trim($_POST['codtipo']),
-
                 ];
 
                 if ($this->usuarioModelo->agregarPermiso($permisoNuevo)){

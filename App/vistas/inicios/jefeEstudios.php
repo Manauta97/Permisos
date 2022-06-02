@@ -2,7 +2,6 @@
 <div id="container">
     <h1>jefe de estudios</h1>
 
-    <p>tabla permisos + que profesor solicita el permiso</p>
     <table class="table table-responsive table-hover">
         <thead>
             <tr>
@@ -25,7 +24,6 @@
                 <td><?php echo $permisoUsu->idPermisoUsuario ?></td>
                     <td><?php echo $permisoUsu->descripcionPermiso ?></td>
                     <td><?php echo $permisoUsu->nombre ." " . $permisoUsu->apellidos?></td>
-                    
                     <td><?php echo $permisoUsu->nombreDocumento ?></td>
                     <td><?php echo $permisoUsu->fechaInicio ?></td>
                     <td><?php echo $permisoUsu->fechaFin ?></td>
