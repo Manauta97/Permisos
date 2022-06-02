@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `permisos`.`usuarios` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `apellidos` VARCHAR(45) NOT NULL,
-  `dni` VARCHAR(9) NOT NULL,
+  `dni` VARCHAR(9) NOT NULL /*UNIQUE*/,
   `centro` VARCHAR(200) NULL,
   `especialidad` VARCHAR(100) NULL,
   `nrp` VARCHAR(45) NOT NULL,
@@ -77,8 +77,9 @@ CREATE TABLE IF NOT EXISTS `permisos`.`usuarios` (
 ENGINE = InnoDB;
 insert into usuarios values
 (1, 'Marta', 'Garcia', '21748821E', 'CPIFP Bajo Aragón', 'Informatica', '222', 'Alcañiz', 2),
-(2, 'Fede', 'Perez', '21748821F', 'CPIFP Bajo Aragón', 'Informatica', '333', 'Alcañiz', 3),
-(3, 'Jonatan', 'Segurana', '21577214G', 'CPIFP Bajo Aragón', 'Informatica', '254', 'Alcañiz', 1);
+(2, 'Fede', 'Perez', '21748871F', 'CPIFP Bajo Aragón', 'Informatica', '333', 'Alcañiz', 3),
+(3, 'Jonatan', 'Segurana', '21577214G', 'CPIFP Bajo Aragón', 'Informatica', '254', 'Alcañiz', 1),
+(4, 'Raul', 'Manauta', '21746940A', 'CPIFP Corona de Aragón', 'Informatica', '454', 'Zaragoza', 3);
 
 -- -----------------------------------------------------
 -- Table `permisos`.`documento`
@@ -98,13 +99,14 @@ insert into documento values
 -- Table `permisos`.`tipoPermiso_has_usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `permisos`.`tipoPermiso_has_usuario` (
+  `idPermisoUsuario` INT NOT NULL AUTO_INCREMENT,
   `idTipoPermiso` INT NOT NULL,
   `id_usuario` INT NOT NULL,
   `id_estado` INT NOT NULL,
   `nombreDocumento` VARCHAR(300) NOT NULL,
   `fechaInicio` DATE NULL,
   `fechaFin` DATE NULL,
-  PRIMARY KEY (`idTipoPermiso`, `id_usuario`),
+  PRIMARY KEY (`idPermisoUsuario`),
   INDEX `fk_tipoPermiso_has_usuario_usuario1_idx` (`id_usuario` ASC) VISIBLE,
   INDEX `fk_tipoPermiso_has_usuario_tipoPermiso1_idx` (`idTipoPermiso` ASC) VISIBLE,
   INDEX `fk_tipoPermiso_has_usuario_estados1_idx` (`id_estado` ASC) VISIBLE,
@@ -132,9 +134,11 @@ CREATE TABLE IF NOT EXISTS `permisos`.`tipoPermiso_has_usuario` (
 ENGINE = InnoDB;
 
 insert into tipoPermiso_has_usuario values 
-(1,2,3,'doc1','2022-05-31','2022-06-05'),
-(2,2,3,'doc2','2022-05-15','2022-05-31');
+(1,1,2,3,'doc1','2022-05-31','2022-06-05'),
+(2,2,2,3,'doc2','2022-05-15','2022-05-31'),
+(3,2,4,3,'doc3','2022-05-15','2022-05-31');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
