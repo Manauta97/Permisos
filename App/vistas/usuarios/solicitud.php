@@ -6,12 +6,6 @@
     <h2 class="card-header">Solicitar Permiso</h2>
 
     <form method="post" class="card-body">
-
-        <div class="mt-3 mb-3">
-            <label for="idu">id usuario: <sup>*</sup></label> 
-            <input type="text" name="idu" id="idu" class="form-control form-control-lg" disabled value='<?php echo $datos['usuarioSesion']->id_usuario ?>' > 
-        </div>
-
         <div class="mt-3 mb-3">
             <label for="fIni">Fecha Inicio: <sup>*</sup></label>
             <input type="date" name="fIni" id="fIni" class="form-control form-control-lg">

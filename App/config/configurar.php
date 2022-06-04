@@ -12,5 +12,9 @@
     // Configuracion de la Base de Datos
     define('DB_HOST', 'localhost');
     define('DB_USUARIO', 'root');
-    define('DB_PASSWORD', 'toor');
+    define('DB_PASSWORD', 'root');
     define('DB_NOMBRE', 'permisos');
+
+
+      //Constante para las imagenes de los documentos
+      define('RUTA_ImgDatos', RUTA_URL . '/public/docs/');

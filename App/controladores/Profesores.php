@@ -38,7 +38,7 @@ class Profesores extends Controlador{
             $solicitudPermiso = [
                 
                 'idTipoPermiso' => trim($_POST['permi']),
-                'id_usuario' => intval(trim($_POST['idu'])),
+                'id_usuario' => $this->datos['usuarioSesion']->id_usuario,
                 'id_estado'=> trim(3),
                 'nombreDocumento' => trim($_POST['fotoDocumento']),
                 'fechaInicio' => trim($_POST['fIni']),
@@ -69,6 +69,32 @@ class Profesores extends Controlador{
             $this->vista('usuarios/solicitud',$this->datos);
         }
 
+    }
+
+    public function subirFoto($id){
+
+        if($_SERVER['REQUEST_METHOD'] =='POST'){
+
+            $dir="/var/www/html/Tragamillas/mvc_completo/public/docs/";
+            
+            // print_r($_FILES['imagen']['name']);exit();
+
+            move_uploaded_file($_FILES['imagen']['tmp_name'], $dir.$_FILES['imagen']['name']);
+
+            $id = $this->datos['usuarioSesion']->id_usuario;
+
+            $fotoNueva = [
+                'imagen' => $_FILES['imagen']['name']
+            ];
+
+            // print_r($fotoNueva); exit();
+            if($this->usuarioModelo->agregarFoto($id, $fotoNueva)){
+                // print_r($licenciaNueva);exit();
+                redireccionar('/inicios/profesor');
+            }else{
+                die('Algo ha fallado!!');
+            }
+        }
     }
 
 }
