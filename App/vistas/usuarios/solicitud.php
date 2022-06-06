@@ -14,11 +14,6 @@
             <label for="fFin">Fecha Fin: <sup>*</sup></label>
             <input type="date" name="fFin" id="fFin" class="form-control form-control-lg">
         </div>
-        <div class="mt-3 mb-3">
-            <label for="fotoDocumento">Documento: <sup>*</sup></label>
-            <input type="text" name="fotoDocumento" id="fotoDocumento" class="form-control form-control-lg">
-        </div>
-
         <div class="mb-3">
             <label for="permi">Permiso: <sup>*</sup></label>
             <select name="permi" id="permi" class="form-select form-select-lg">

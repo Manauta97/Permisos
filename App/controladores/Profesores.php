@@ -40,7 +40,7 @@ class Profesores extends Controlador{
                 'idTipoPermiso' => trim($_POST['permi']),
                 'id_usuario' => $this->datos['usuarioSesion']->id_usuario,
                 'id_estado'=> trim(3),
-                'nombreDocumento' => trim($_POST['fotoDocumento']),
+                'nombreDocumento' => trim(''),
                 'fechaInicio' => trim($_POST['fIni']),
                 'fechaFin' => trim($_POST['fFin']),
                 
@@ -71,13 +71,18 @@ class Profesores extends Controlador{
 
     }
 
-    public function subirFoto($id){
+    public function subirFoto($idP){
+        
+       
+        $this->datos['rolesPermitidos'] = [3];   
 
+        if (!tienePrivilegios($this->datos['usuarioSesion']->id_rol,$this->datos['rolesPermitidos'])) {
+            redireccionar('/usuarios');
+        }
+        
         if($_SERVER['REQUEST_METHOD'] =='POST'){
 
-            $dir="/var/www/html/Tragamillas/mvc_completo/public/docs/";
-            
-            // print_r($_FILES['imagen']['name']);exit();
+            $dir="/var/www/html/Permisos/public/docs/";
 
             move_uploaded_file($_FILES['imagen']['tmp_name'], $dir.$_FILES['imagen']['name']);
 
@@ -85,11 +90,9 @@ class Profesores extends Controlador{
 
             $fotoNueva = [
                 'imagen' => $_FILES['imagen']['name']
-            ];
+            ];           
+            if($this->profesorModelo->agregarFoto($idP, $fotoNueva)){
 
-            // print_r($fotoNueva); exit();
-            if($this->usuarioModelo->agregarFoto($id, $fotoNueva)){
-                // print_r($licenciaNueva);exit();
                 redireccionar('/inicios/profesor');
             }else{
                 die('Algo ha fallado!!');
