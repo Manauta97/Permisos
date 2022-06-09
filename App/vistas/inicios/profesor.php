@@ -4,7 +4,7 @@
 <table class="table table-responsive table-hover">
         <thead>
             <tr>
-               
+               <th>id</th>
                 <th>Descripcion Permiso</th>
                 <th>Documento</th>
                 
@@ -12,12 +12,13 @@
                 <th>Fecha fin permiso</th>
                 <th>Estado</th>
                 <th>Subir documento</th>
+                <td>eliminar documento</td>
             </tr>
         </thead>
         <tbody>
             <?php foreach($datos['tipoPermiso_has_usuario'] as $permisoProp): ?>
                 <tr>
-                    
+                <td><?php echo $permisoProp->idPermisoUsuario ?></td>
                     <td><?php echo $permisoProp->descripcionPermiso ?></td>
                     <td>
                         <?php if ($permisoProp->nombreDocumento==''){echo '';} else {?> <img width="200" height="200" class="rounded img-fluid" src="<?php echo RUTA_ImgDatos.$permisoProp->id_usuario."/".$permisoProp->nombreDocumento ?>"><?php ;}?>
@@ -44,6 +45,13 @@
                                 
                             </form>
                         </div>
+                    </td>
+                    <td>
+                    <?php if ($permisoProp->nombreDocumento=='') { ?>
+                        <a href="<?php echo RUTA_URL?>/Profesores/borrar/<?php echo $permisoProp->idPermisoUsuario ?>" hidden></a>
+                    <?php   } else {?>
+                        <a href="<?php echo RUTA_URL?>/Profesores/borrar/<?php echo $permisoProp->idPermisoUsuario ?>">Borrar</a>
+                    <?php   } ?>  
                     </td>
                 </tr>
             <?php endforeach ?>

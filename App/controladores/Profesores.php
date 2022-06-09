@@ -88,7 +88,7 @@ class Profesores extends Controlador{
 
             if (!is_dir($dir) || !file_exists($dir)) {
                 
-                mkdir($dir, 0777, true);
+                mkdir($dir, 7777, true);
 
             }
 
@@ -98,7 +98,9 @@ class Profesores extends Controlador{
 
             $fotoNueva = [
                 'imagen' => $_FILES['imagen']['name']
-            ];           
+            ];        
+            
+            
             if($this->profesorModelo->agregarFoto($idP, $fotoNueva)){
 
                 redireccionar('/inicios/profesor');
@@ -108,5 +110,24 @@ class Profesores extends Controlador{
         }
     }
 
-}
+    public function borrar($id){
+        
+        $this->datos['rolesPermitidos'] = [3]; 
+        if (!tienePrivilegios($this->datos['usuarioSesion']->id_rol,$this->datos['rolesPermitidos'])) {
+            redireccionar('/usuarios');
+        }
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if ($this->profesorModelo->eliminarFoto($id)){
+                redireccionar('/inicios/profesor');
+            } else {
+                die('Algo ha fallado!!!');
+            }
 
+            $this->profesorModelo->obtenerPermisosPropios($this->datos['usuarioSesion']->id_usuario); 
+        
+            $this->vista('/inicios/profesor',$this->datos);   
+        } 
+    }
+
+}

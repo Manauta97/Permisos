@@ -58,11 +58,8 @@ class Profesor {
 
     public function agregarFoto($id, $fotoNueva){
 
+        //var_dump($fotoNueva['imagen']);
        
-        var_dump($fotoNueva['imagen']);
-       
-
-        //$this->db->query("INSERT INTO tipoPermiso_has_usuario (nombreDocumento) values nombreDocumento = :foto WHERE id_usuario = $id");
         
         $this->db->query("UPDATE tipoPermiso_has_usuario SET nombreDocumento = :foto WHERE idPermisoUsuario = $id");
         $this->db->bind(':foto', $fotoNueva['imagen']);
@@ -74,6 +71,18 @@ class Profesor {
             return false;
         }
 
+    }
+
+    public function eliminarFoto($id){ 
+
+        $this->db->query("UPDATE tipoPermiso_has_usuario SET nombreDocumento = :espacio WHERE idPermisoUsuario = $id");
+        $this->db->bind(':espacio', '' );
+        
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
