@@ -17,9 +17,10 @@
         <tbody>
             <?php foreach($datos['tipoPermiso_has_usuario'] as $permisoProp): ?>
                 <tr>
+                    
                     <td><?php echo $permisoProp->descripcionPermiso ?></td>
                     <td>
-                        <?php if ($permisoProp->nombreDocumento==''){echo '';} else {?> <img width="200" height="200" class="rounded img-fluid" src="<?php echo RUTA_ImgDatos.$permisoProp->nombreDocumento?>"><?php ;}?>
+                        <?php if ($permisoProp->nombreDocumento==''){echo '';} else {?> <img width="200" height="200" class="rounded img-fluid" src="<?php echo RUTA_ImgDatos.$permisoProp->id_usuario."/".$permisoProp->nombreDocumento ?>"><?php ;}?>
                     </td>
                     <td><?php echo $permisoProp->fechaInicio ?></td>
                     <td><?php echo $permisoProp->fechaFin ?></td>

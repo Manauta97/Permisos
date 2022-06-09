@@ -81,8 +81,16 @@ class Profesores extends Controlador{
         }
         
         if($_SERVER['REQUEST_METHOD'] =='POST'){
+           
+            $carpetaUsuario = $this->datos['usuarioSesion']->id_usuario;
 
-            $dir="/var/www/html/Permisos/public/docs/";
+            $dir="/var/www/html/Permisos/public/docs/$carpetaUsuario/";
+
+            if (!is_dir($dir) || !file_exists($dir)) {
+                
+                mkdir($dir, 0777, true);
+
+            }
 
             move_uploaded_file($_FILES['imagen']['tmp_name'], $dir.$_FILES['imagen']['name']);
 

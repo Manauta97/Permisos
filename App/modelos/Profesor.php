@@ -14,7 +14,7 @@ class Profesor {
 
     public function obtenerPermisosPropios($idUsuario){
 
-        $sql = "SELECT idPermisoUsuario,descripcionPermiso, nombreDocumento, fechaInicio, fechaFin, nombreEstado  FROM tipoPermiso_has_usuario 
+        $sql = "SELECT idPermisoUsuario, usuarios.id_usuario, descripcionPermiso, nombreDocumento, fechaInicio, fechaFin, nombreEstado  FROM tipoPermiso_has_usuario 
         inner join tipoPermiso
         on tipoPermiso_has_usuario.idTipoPermiso = tipoPermiso.idTipoPermiso
         inner join usuarios

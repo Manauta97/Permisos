@@ -7,7 +7,6 @@
             $this->db = new Base;
         }
 
-
         public function obtenerUsuarios(){
             $this->db->query("SELECT * FROM usuarios");
 
@@ -20,7 +19,6 @@
             return $this->db->registros();
         }
 
-
         public function obtenerRoles(){
             $this->db->query("SELECT * FROM roles");
 
@@ -32,7 +30,6 @@
 
             return $this->db->registros();
         }
-
 
         public function agregarUsuario($datos){
             $this->db->query("INSERT INTO usuarios (nombre, apellidos, dni, centro, especialidad, nrp, localidad, id_rol) 

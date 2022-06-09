@@ -22,8 +22,6 @@
             <label for="apellidos">Apellido: <sup>*</sup></label>
             <input type="text" name="apellidos" id="apellidos" class="form-control form-control-lg" value="<?php echo $datos['usuario']->apellidos ?>">
         </div>
-
-
         <div class="mt-3 mb-3">
             <label for="apellidos">dni: <sup>*</sup></label>
             <input type="text" name="dni" id="dni" class="form-control form-control-lg" value="<?php echo $datos['usuario']->dni ?>">
