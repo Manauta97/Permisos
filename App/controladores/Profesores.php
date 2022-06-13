@@ -110,24 +110,26 @@ class Profesores extends Controlador{
         }
     }
 
-    public function borrar($id){
+    public function borrarFoto($id){
         
         $this->datos['rolesPermitidos'] = [3]; 
         if (!tienePrivilegios($this->datos['usuarioSesion']->id_rol,$this->datos['rolesPermitidos'])) {
             redireccionar('/usuarios');
         }
-        
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if ($this->profesorModelo->eliminarFoto($id)){
-                redireccionar('/inicios/profesor');
-            } else {
-                die('Algo ha fallado!!!');
-            }
+
+       // print_r($id);
+        //exit();
+
+       
+            $this->profesorModelo->eliminarFoto($id);
+                
+            redireccionar('/inicios/profesor');
+            
 
             $this->profesorModelo->obtenerPermisosPropios($this->datos['usuarioSesion']->id_usuario); 
         
             $this->vista('/inicios/profesor',$this->datos);   
-        } 
+        
     }
 
 }

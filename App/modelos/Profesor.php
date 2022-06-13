@@ -75,9 +75,10 @@ class Profesor {
 
     public function eliminarFoto($id){ 
 
-        $this->db->query("UPDATE tipoPermiso_has_usuario SET nombreDocumento = :espacio WHERE idPermisoUsuario = $id");
-        $this->db->bind(':espacio', '' );
         
+        $this->db->query("UPDATE tipoPermiso_has_usuario SET nombreDocumento = '' WHERE idPermisoUsuario = $id");
+        
+          
         if($this->db->execute()){
             return true;
         } else {
