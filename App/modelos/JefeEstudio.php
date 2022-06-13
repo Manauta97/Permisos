@@ -9,7 +9,7 @@
 
         public function obtenerPermisosUsuario($centro){
 
-            $sql = "SELECT idPermisoUsuario,descripcionPermiso, nombre, apellidos ,nombreDocumento, fechaInicio, fechaFin, nombreEstado  FROM tipoPermiso_has_usuario 
+            $sql = "SELECT idPermisoUsuario,descripcionPermiso, nombre, apellidos, usuarios.id_usuario ,nombreDocumento, fechaInicio, fechaFin, nombreEstado  FROM tipoPermiso_has_usuario 
             inner join tipoPermiso
             on tipoPermiso_has_usuario.idTipoPermiso = tipoPermiso.idTipoPermiso
             inner join usuarios

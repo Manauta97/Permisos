@@ -5,7 +5,6 @@
     <table class="table table-responsive table-hover">
         <thead>
             <tr>
-               <th>id</th>
                 <th>Descripcion Permiso</th>
                 <th>Profesor Solicitante</th>
                 <th>Documento</th>
@@ -21,10 +20,11 @@
             <?php foreach($datos['tipoPermiso_has_usuario'] as $permisoUsu): ?>
                 
                 <tr>
-                <td><?php echo $permisoUsu->idPermisoUsuario ?></td>
                     <td><?php echo $permisoUsu->descripcionPermiso ?></td>
                     <td><?php echo $permisoUsu->nombre ." " . $permisoUsu->apellidos?></td>
-                    <td><?php echo $permisoUsu->nombreDocumento ?></td>
+                    <td>
+                        <?php if ($permisoUsu->nombreDocumento==''){echo '';} else {?> <img width="200" height="200" class="rounded img-fluid" src="<?php echo RUTA_ImgDatos.$permisoUsu->id_usuario."/".$permisoUsu->nombreDocumento ?>"><?php ;}?>
+                    </td>
                     <td><?php echo $permisoUsu->fechaInicio ?></td>
                     <td><?php echo $permisoUsu->fechaFin ?></td>
                     <td><?php echo $permisoUsu->nombreEstado ?></td>
