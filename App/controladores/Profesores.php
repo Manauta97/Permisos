@@ -16,11 +16,10 @@ class Profesores extends Controlador{
     }
 
     public function index(){
-        //Obtenemos los usuarios
+        
         $profesorPermiso = $this->profesorModelo->obtenerPermisosPropios($this->datos['usuarioSesion']->id_usuario);
         
         $this->datos['tipoPermiso_has_usuario'] = $profesorPermiso;
-        // $this->vista('inicios/admin',$this->datos);  
         
         $this->vista('/inicios/profesor',$this->datos);   
     }
@@ -116,20 +115,41 @@ class Profesores extends Controlador{
         if (!tienePrivilegios($this->datos['usuarioSesion']->id_rol,$this->datos['rolesPermitidos'])) {
             redireccionar('/usuarios');
         }
-
-       // print_r($id);
-        //exit();
-
+        print_r($id);
        
-            $this->profesorModelo->eliminarFoto($id);
-                
-            redireccionar('/inicios/profesor');
-            
+      
 
-            $this->profesorModelo->obtenerPermisosPropios($this->datos['usuarioSesion']->id_usuario); 
+
+        $nDocu = $this->profesorModelo->obtenerPermisosPropios($this->datos['usuarioSesion']->id_usuario);
+        $this->datos['tipoPermiso_has_usuario']= $nDocu;
+       
         
-            $this->vista('/inicios/profesor',$this->datos);   
+
+        $carpetaUsuario = $this->datos['usuarioSesion']->id_usuario;
+
+        $dir="/var/www/html/Permisos/public/docs/$carpetaUsuario/";
+
         
+      ?>  <pre>  
+          <?php 
+          
+          
+         
+          ?>  <pre> 
+ <?php
+
+
+        if($this->profesorModelo->eliminarFoto($id)){
+            unlink($dir.$id);  
+            redireccionar('/inicios/profesor');
+        }else{
+            die('Algo ha fallado!!');
+        }        
+
     }
+
+
+
+
 
 }

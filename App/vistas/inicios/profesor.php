@@ -34,6 +34,9 @@
                                 <div class="mb-3">
                                     <input accept="image/*" type="file" id="img" name="imagen" >
                                 </div>
+
+                             
+
                                 <?php if ($permisoProp->nombreDocumento=='') {
                                     ?>
                                         <input type="submit" class="btn btn-success" value="Adjuntar documento" id="botonS">
@@ -49,7 +52,11 @@
                     </td>
                     <td>
                     <?php if ($permisoProp->nombreDocumento!='') { ?>
-                        <a href="<?php echo RUTA_URL?>/Profesores/borrarFoto/<?php echo $permisoProp->idPermisoUsuario ?>">Borrar</a>
+                        <form action="<?php echo RUTA_URL?>/Profesores/borrarFoto/<?php echo $permisoProp->nombreDocumento ?>" method="post">
+                        
+                            <input type="text" name="photo" id="photo" value="<?php echo $permisoProp->nombreDocumento ?>" disabled>
+                            <input type="submit" class="btn btn-danger" value="borrar" id="botonBorrar">
+                        </form>
                     <?php   } ?>  
                     </td>
                 </tr>

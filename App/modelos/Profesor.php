@@ -34,8 +34,6 @@ class Profesor {
         $sql = "INSERT INTO tipoPermiso_has_usuario (idTipoPermiso,id_usuario,id_estado,nombreDocumento,fechaInicio,fechaFin) 
         VALUES (:idTipoPermiso, :id_usuario, :id_estado, :nombreDocumento, :fechaInicio, :fechaFin)";
 
-       
-
         $this->db->query($sql);
 
         //vinculamos los valores
@@ -57,9 +55,6 @@ class Profesor {
     }
 
     public function agregarFoto($id, $fotoNueva){
-
-        //var_dump($fotoNueva['imagen']);
-       
         
         $this->db->query("UPDATE tipoPermiso_has_usuario SET nombreDocumento = :foto WHERE idPermisoUsuario = $id");
         $this->db->bind(':foto', $fotoNueva['imagen']);
@@ -76,8 +71,8 @@ class Profesor {
     public function eliminarFoto($id){ 
 
         
-        $this->db->query("UPDATE tipoPermiso_has_usuario SET nombreDocumento = '' WHERE idPermisoUsuario = $id");
-        
+        $this->db->query("UPDATE tipoPermiso_has_usuario SET nombreDocumento = '' WHERE nombreDocumento = :nombreDocumento");
+        $this->db->bind(':nombreDocumento',$id);
           
         if($this->db->execute()){
             return true;
