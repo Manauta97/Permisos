@@ -13,7 +13,7 @@
 </head>
 <body>
     
-<header>
+<!-- <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
             <a href="<?php echo RUTA_URL?>" class="navbar-brand"><?php echo NOMBRE_SITIO ?></a>
@@ -29,6 +29,6 @@
             </div>
         </div>
     </nav>
-</header>
+</header> -->
 
 <br><br><br>

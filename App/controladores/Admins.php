@@ -1,6 +1,6 @@
 <?php
 
-    class Usuarios extends Controlador{
+    class Admins extends Controlador{
 
         public function __construct(){
             Sesion::iniciarSesion($this->datos);
@@ -10,7 +10,7 @@
                 redireccionar('/');
             }
 
-            $this->usuarioModelo = $this->modelo('Usuario');
+            $this->usuarioModelo = $this->modelo('Admin');
 
             $this->datos['menuActivo'] = 1;         // Definimos el menu que sera destacado en la vista
             
@@ -34,7 +34,7 @@
             $this->datos['rolesPermitidos'] = [1];          // Definimos los roles que tendran acceso
 
             if (!tienePrivilegios($this->datos['usuarioSesion']->id_rol,$this->datos['rolesPermitidos'])) {
-                redireccionar('/usuarios');
+                redireccionar('/admins');
             }
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -51,7 +51,7 @@
                 ];
 
                 if ($this->usuarioModelo->agregarUsuario($usuarioNuevo)){
-                    redireccionar('/usuarios');
+                    redireccionar('/admins');
                 } else {
                     die('Algo ha fallado!!!');
                 }
@@ -80,7 +80,7 @@
             $this->datos['rolesPermitidos'] = [1];   
 
             if (!tienePrivilegios($this->datos['usuarioSesion']->id_rol,$this->datos['rolesPermitidos'])) {
-                redireccionar('/usuarios');
+                redireccionar('/admins');
             }
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -91,7 +91,7 @@
                 ];
 
                 if ($this->usuarioModelo->agregarPermiso($permisoNuevo)){
-                    redireccionar('/usuarios');
+                    redireccionar('/admins');
                 } else {
                     die('Algo ha fallado!!!');
                 }
@@ -114,7 +114,7 @@
             $this->datos['rolesPermitidos'] = [1];          // Definimos los roles que tendran acceso
 
             if (!tienePrivilegios($this->datos['usuarioSesion']->id_rol,$this->datos['rolesPermitidos'])) {
-                redireccionar('/usuarios');
+                redireccionar('/admins');
             }
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -134,7 +134,7 @@
                 ];
 
                 if ($this->usuarioModelo->actualizarUsuario($usuarioModificado)){
-                    redireccionar('/usuarios');
+                    redireccionar('/admins');
                 } else {
                     die('Algo ha fallado!!!');
                 }
@@ -163,7 +163,7 @@
                 ];
 
                 if ($this->usuarioModelo->actualizarPermiso($permisoModificado)){
-                    redireccionar('/usuarios');
+                    redireccionar('/admins');
                 } else {
                     die('Algo ha fallado!!!');
                 }
@@ -183,7 +183,7 @@
             
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if ($this->usuarioModelo->borrarUsuario($id)){
-                    redireccionar('/usuarios');
+                    redireccionar('/admins');
                 } else {
                     die('Algo ha fallado!!!');
                 }
@@ -199,7 +199,7 @@
             
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if ($this->usuarioModelo->borrarPermiso($id)){
-                    redireccionar('/usuarios');
+                    redireccionar('/admins');
                 } else {
                     die('Algo ha fallado!!!');
                 }

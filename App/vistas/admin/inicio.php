@@ -48,9 +48,9 @@
                     
 <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
                     <td>
-                        <a href="<?php echo RUTA_URL?>/usuarios/editar/<?php echo $uruario->id_usuario ?>">Editar</a>
+                        <a href="<?php echo RUTA_URL?>/admins/editar/<?php echo $uruario->id_usuario ?>">Editar</a>
                         &nbsp;&nbsp;&nbsp;
-                        <a href="<?php echo RUTA_URL?>/usuarios/borrar/<?php echo $uruario->id_usuario ?>">Borrar</a>
+                        <a href="<?php echo RUTA_URL?>/admins/borrar/<?php echo $uruario->id_usuario ?>">Borrar</a>
                         &nbsp;&nbsp;&nbsp;
                     </td>
 <?php endif ?>
@@ -61,7 +61,7 @@
 
 <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
     <div class="col text-center">
-        <a class="btn btn-success" href="<?php echo RUTA_URL?>/usuarios/agregar/">Agregar Profesor</a>
+        <a class="btn btn-success" href="<?php echo RUTA_URL?>/admins/agregar/">Agregar Profesor</a>
     </div>
 
 <br> <br>
@@ -87,9 +87,9 @@
 
             <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
                 <td>
-                    <a href="<?php echo RUTA_URL?>/usuarios/editarPermiso/<?php echo $tpermiso->idTipoPermiso ?>">Editar</a>
+                    <a href="<?php echo RUTA_URL?>/admins/editarPermiso/<?php echo $tpermiso->idTipoPermiso ?>">Editar</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a href="<?php echo RUTA_URL?>/usuarios/borrarP/<?php echo $tpermiso->idTipoPermiso ?>">Borrar</a>
+                    <a href="<?php echo RUTA_URL?>/admins/borrarP/<?php echo $tpermiso->idTipoPermiso ?>">Borrar</a>
                 </td>
         <?php endif ?>
         <?php endforeach ?>
@@ -99,7 +99,7 @@
 </table>    
 <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
     <div class="col text-center">
-        <a class="btn btn-success" href="<?php echo RUTA_URL?>/usuarios/agregarPermisos/">Agregar Permiso</a>
+        <a class="btn btn-success" href="<?php echo RUTA_URL?>/admins/agregarPermisos/">Agregar Permiso</a>
     </div>
 <?php endif ?>
 

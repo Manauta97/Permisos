@@ -24,7 +24,7 @@
         </div>
         <div class="mt-3 mb-3">
             <label for="apellidos">dni: <sup>*</sup></label>
-            <input type="text" name="dni" id="dni" class="form-control form-control-lg" value="<?php echo $datos['usuario']->dni ?>">
+            <input type="text" name="dni" id="dni" class="form-control form-control-lg" maxlength="9" value="<?php echo $datos['usuario']->dni ?>">
         </div>
         <div class="mt-3 mb-3">
             <label for="centro">centro: <sup>*</sup></label>

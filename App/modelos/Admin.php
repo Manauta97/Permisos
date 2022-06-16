@@ -1,6 +1,6 @@
 <?php
 
-    class Usuario {
+    class Admin {
         private $db;
 
         public function __construct(){

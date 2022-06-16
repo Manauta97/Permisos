@@ -1,26 +1,32 @@
 <?php require_once RUTA_APP.'/vistas/inc/header_no_logueado.php' ?>
 
-<a href=".." class="btn btn-light"><i class="bi bi-chevron-double-left"></i>Volver</a>
+<!--  <a href=".." class="btn btn-light"><i class="bi bi-chevron-double-left"></i>Volver</a>-->
 
 <div class="container">
-  <div class="jumbotron">
-    <h1>Login</h1>
+  <div class="jumbotron mb-5 text-center">
+    <h1>Gestión de Permisos</h1>
   </div>   
 
-  <form method="post" class="card-body">
+  <!-- <form method="post" class="card-body">
     <div class="form-floating mb-3">
       <input type="text" name="dnisesion" class="form-control" id="dnisesion" placeholder="" required>
       <label for="dnisesion">DNI</label>
     </div>
-
- <!--    <div class="form-floating mb-3">
-      <input type="password" name="contra" class="form-control" id="floatingInput" placeholder="" required>
-      <label for="floatingInput">Contraseña</label>
-    </div>
---> 
     <input type="submit" class="btn btn-success" value="Login">
+  </form> -->
 
-  </form>
+
+  <div class="card-body text-center shadow">
+    <div class="mb-md-5 mt-md-5">
+      <form method="post" class="card-body">
+        <div class="form-floating mb-3">
+          <input type="text" name="dnisesion" class="form-control" id="dnisesion" placeholder="" required>
+          <label for="dnisesion">DNI</label>
+        </div>
+        <input type="submit" class="btn btn-success" value="Login">
+    </form> 
+    </div>
+  </div>          
 
   <?php if (isset($datos['error']) && $datos['error'] == 'error_1' ): ?>
 
