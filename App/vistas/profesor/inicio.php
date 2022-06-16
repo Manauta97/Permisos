@@ -49,7 +49,7 @@
                         <form action="<?php echo RUTA_URL?>/Profesores/borrarFoto/<?php echo $permisoProp->nombreDocumento ?>" method="post">
                         
                             <!--  <input type="text" name="photo" id="photo" value="<?php echo $permisoProp->nombreDocumento ?>" disabled>-->
-                            <input type="submit" class="btn btn-danger" value="borrar" id="botonBorrar">
+                            <input type="submit" class="btn btn-danger" value="borrar" id="botonBorrar" onclick="return confirm('¿Seguro que quieres borrar el documento?');">
                         </form>
                     <?php   } ?>  
                     </td>

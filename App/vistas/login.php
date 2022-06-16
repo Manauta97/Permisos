@@ -23,7 +23,7 @@
           <input type="text" name="dnisesion" class="form-control" id="dnisesion" placeholder="" required>
           <label for="dnisesion">DNI</label>
         </div>
-        <input type="submit" class="btn btn-success" value="Login">
+        <input type="submit" class="btn btn-primary" value="Login">
     </form> 
     </div>
   </div>          
