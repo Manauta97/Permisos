@@ -1,5 +1,5 @@
 <?php require_once RUTA_APP.'/vistas/inc/header.php' ?>
-<h1>profesor</h1>
+<h1 class="text-center mb-5 mt-5">Profesor</h1>
 
 <table class="table table-responsive table-hover">
    

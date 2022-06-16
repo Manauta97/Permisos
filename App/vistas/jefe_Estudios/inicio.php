@@ -1,6 +1,6 @@
 <?php require_once RUTA_APP.'/vistas/inc/header.php' ?>
 <div id="container">
-    <h1>jefe de estudios</h1>
+    <h1 class="text-center mt-5 mb-5">jefe de estudios</h1>
 
     <table class="table table-responsive table-hover">
         <thead>
