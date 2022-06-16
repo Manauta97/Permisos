@@ -21,7 +21,7 @@ class Profesores extends Controlador{
         
         $this->datos['tipoPermiso_has_usuario'] = $profesorPermiso;
         
-        $this->vista('/inicios/profesor',$this->datos);   
+        $this->vista('/profesor/inicio',$this->datos);   
     }
 
 
@@ -65,7 +65,7 @@ class Profesores extends Controlador{
 
             $this->datos['tipoPermiso'] = $this->profesorModelo->obtenerTiposPermiso();
 
-            $this->vista('usuarios/solicitud',$this->datos);
+            $this->vista('profesor/solicitud',$this->datos);
         }
 
     }
@@ -102,7 +102,7 @@ class Profesores extends Controlador{
             
             if($this->profesorModelo->agregarFoto($idP, $fotoNueva)){
 
-                redireccionar('/inicios/profesor');
+                redireccionar('/profesor/inicio');
             }else{
                 die('Algo ha fallado!!');
             }
@@ -127,7 +127,7 @@ class Profesores extends Controlador{
 
         if($this->profesorModelo->eliminarFoto($id)){
             unlink($dir.$id);  
-            redireccionar('/inicios/profesor');
+            redireccionar('/profesor/inicio');
         }else{
             die('Algo ha fallado!!');
         }        

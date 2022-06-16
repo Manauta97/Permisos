@@ -12,7 +12,7 @@
                 <th>Fecha fin permiso</th>
                 <th>Estado</th>
                 <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[2])):?>
-                    <th>Acciones</th>
+                <th>Acciones</th>
                 <?php endif ?>
             </tr>
         </thead>

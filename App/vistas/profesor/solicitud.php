@@ -32,3 +32,11 @@
 </div>
 
 <?php require_once RUTA_APP.'/vistas/inc/footer.php' ?>
+
+<script>
+
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById("fIni").setAttribute('min', today);
+    document.getElementById("fFin").setAttribute('min', today);
+    
+</script>

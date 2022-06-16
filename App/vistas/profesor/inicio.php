@@ -10,15 +10,11 @@
                 <th>Fecha inicio permiso</th>
                 <th>Fecha fin permiso</th>
                 <th>Estado</th>
-                <th>Subir documento</th>
-                 <?php foreach($datos['tipoPermiso_has_usuario'] as $permisoProp): ?>
-                <?php if ($permisoProp->nombreDocumento!='') { ?>          
-                <td>eliminar documento</td>
-                <?php } ?>             
+                <th>Subir documento</th>  
             </tr>
         </thead>
         <tbody>
-            
+        <?php foreach($datos['tipoPermiso_has_usuario'] as $permisoProp): ?>
                 <tr>
                     <td><?php echo $permisoProp->descripcionPermiso ?></td>
                     <td>
@@ -34,8 +30,6 @@
                                 <div class="mb-3">
                                     <input accept="image/*" type="file" id="img" name="imagen" >
                                 </div>
-
-                             
 
                                 <?php if ($permisoProp->nombreDocumento=='') {
                                     ?>
@@ -54,7 +48,7 @@
                     <?php if ($permisoProp->nombreDocumento!='') { ?>
                         <form action="<?php echo RUTA_URL?>/Profesores/borrarFoto/<?php echo $permisoProp->nombreDocumento ?>" method="post">
                         
-                            <input type="text" name="photo" id="photo" value="<?php echo $permisoProp->nombreDocumento ?>" disabled>
+                            <!--  <input type="text" name="photo" id="photo" value="<?php echo $permisoProp->nombreDocumento ?>" disabled>-->
                             <input type="submit" class="btn btn-danger" value="borrar" id="botonBorrar">
                         </form>
                     <?php   } ?>  

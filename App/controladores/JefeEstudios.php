@@ -21,7 +21,7 @@
            
             $this->datos['tipoPermiso_has_usuario'] = $SolicitudPermisos;
             
-            $this->vista('inicios/jefeEstudios',$this->datos);   
+            $this->vista('jefe_Estudios/inicio',$this->datos);   
         }
         
 
@@ -37,7 +37,7 @@
                     'Aceptado' => 1,                    
                 ];
                 if ($this->jefeEstudioModelo->aceptar($usuarioPermiso, $idUsuPermiso)){
-                    redireccionar('/inicios/jefeEstudios');
+                    redireccionar('/inicios/inicio');
                 } else {
                     die('Algo ha fallado!!!');
                 }
@@ -47,7 +47,7 @@
                 ];
                 $this->datos['tipoPermiso_has_usuario'] = $this->JefeEstudio->aceptar($idUsuPermiso, $this->datos['tipoPermiso_has_usuario']);
 
-                $this->vista('/inicios/jefeEstudios',$this->datos);   
+                $this->vista('/jefe_Estudios/inicio',$this->datos);   
             }
 
         }
@@ -64,7 +64,7 @@
                     'Denegado' => 2,                    
                 ];
                 if ($this->jefeEstudioModelo->denegar($usuarioPermiso, $idUsuPermiso)){
-                    redireccionar('/inicios/jefeEstudios');
+                    redireccionar('/jefe_Estudios/inicio');
                 } else {
                     die('Algo ha fallado!!!');
                 }
@@ -74,7 +74,7 @@
                 ];
                 $this->datos['tipoPermiso_has_usuario'] = $this->JefeEstudio->denegar($idUsuPermiso, $this->datos['tipoPermiso_has_usuario']);
 
-                $this->vista('/inicios/jefeEstudios',$this->datos);   
+                $this->vista('/jefe_Estudios/inicio',$this->datos);   
             }
 
         }

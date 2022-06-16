@@ -26,7 +26,7 @@
             $this->datos['tipoPermiso'] = $permiso;
 
             
-            $this->vista('inicios/admin',$this->datos);   
+            $this->vista('admin/inicio',$this->datos);   
         }
 
 
@@ -72,7 +72,7 @@
 
                 $this->datos['listaRoles'] = $this->usuarioModelo->obtenerRoles();
 
-                $this->vista('usuarios/agregar_editar',$this->datos);
+                $this->vista('admin/agregar_editar',$this->datos);
             }
         }
 
@@ -104,7 +104,7 @@
 
                 $this->datos['listaestado'] = $this->usuarioModelo->obtenerEstados();
 
-                $this->vista('usuarios/agregarPermiso',$this->datos);
+                $this->vista('admin/agregarPermiso',$this->datos);
             }
 
         }
@@ -143,7 +143,7 @@
                 $this->datos['usuario'] = $this->usuarioModelo->obtenerUsuarioId($id);
                 $this->datos['listaRoles'] = $this->usuarioModelo->obtenerRoles();
 
-                $this->vista('usuarios/agregar_editar',$this->datos);
+                $this->vista('admin/agregar_editar',$this->datos);
             }
         }
 
@@ -174,7 +174,7 @@
 
                 //$this->datos['listaRoles'] = $this->usuarioModelo->obtenerRoles();
 
-                $this->vista('usuarios/editpermiso',$this->datos);
+                $this->vista('admin/editpermiso',$this->datos);
             }
         }
 
@@ -191,7 +191,7 @@
                 //obtenemos información del usuario desde del modelo
                 $this->datos['usuario'] = $this->usuarioModelo->obtenerUsuarioId($id);
 
-                $this->vista('usuarios/borrar',$this->datos);
+                $this->vista('admin/borrar',$this->datos);
             }
         }
 
@@ -207,7 +207,7 @@
                 //obtenemos información del usuario desde del modelo
                 $this->datos['tipoPermiso'] = $this->usuarioModelo->obtenerPermisoId($id);
 
-                $this->vista('usuarios/borrarPermiso',$this->datos);
+                $this->vista('admin/borrarPermiso',$this->datos);
             }
         }
 
