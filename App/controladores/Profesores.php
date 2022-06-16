@@ -115,28 +115,14 @@ class Profesores extends Controlador{
         if (!tienePrivilegios($this->datos['usuarioSesion']->id_rol,$this->datos['rolesPermitidos'])) {
             redireccionar('/usuarios');
         }
-        print_r($id);
        
-      
-
 
         $nDocu = $this->profesorModelo->obtenerPermisosPropios($this->datos['usuarioSesion']->id_usuario);
         $this->datos['tipoPermiso_has_usuario']= $nDocu;
        
-        
-
         $carpetaUsuario = $this->datos['usuarioSesion']->id_usuario;
 
         $dir="/var/www/html/Permisos/public/docs/$carpetaUsuario/";
-
-        
-      ?>  <pre>  
-          <?php 
-          
-          
-         
-          ?>  <pre> 
- <?php
 
 
         if($this->profesorModelo->eliminarFoto($id)){
