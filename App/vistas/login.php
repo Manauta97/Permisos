@@ -11,7 +11,7 @@
     <div class="mb-md-5 mt-md-5">
       <form method="post" class="card-body">
         <div class="form-floating mb-3">
-          <input type="text" name="dnisesion" class="form-control" id="dnisesion" placeholder="" required>
+          <input type="text" name="dnisesion" class="form-control" id="dnisesion" placeholder="" required maxlength="9">
           <label for="dnisesion">DNI</label>
         </div>
         <input type="submit" class="btn btn-primary" value="Login">

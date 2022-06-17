@@ -12,7 +12,7 @@
         </div>
         <div class="mt-3 mb-3">
             <label for="codtipo">Codigo: <sup>*</sup></label>
-            <input type="text" name="codtipo" id="codtipo" class="form-control form-control-lg">
+            <input type="text" name="codtipo" id="codtipo" class="form-control form-control-lg" maxlength="3">
         </div>
         <input type="submit" class="btn btn-success" value="Agregar">
     </form>
