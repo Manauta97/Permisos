@@ -135,5 +135,31 @@ class Profesores extends Controlador{
 
     }
 
+    public function cancelarSolicitud($id,$n){
+        $this->datos['rolesPermitidos'] = [3]; 
+        if (!tienePrivilegios($this->datos['usuarioSesion']->id_rol,$this->datos['rolesPermitidos'])) {
+            redireccionar('/usuarios');
+        }
+
+        $carpetaUsuario = $this->datos['usuarioSesion']->id_usuario;
+        $dir="/var/www/html/Permisos/public/docs/$carpetaUsuario/";
+                
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if ($this->profesorModelo->eliminarSolicitud($id,$n)){
+
+                unlink($dir.$n); 
+                
+                redireccionar('/profesores');
+            } else {
+                die('Algo ha fallado!!!');
+            }
+        } else {
+            //obtenemos información del usuario desde del modelo
+            $this->datos['usuario'] = $this->profesorModelo->obtenerPermisosPropios($id);
+
+            $this->vista('profesor/inicio',$this->datos);
+        }
+    }
 
 }

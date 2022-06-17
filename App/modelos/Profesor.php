@@ -83,6 +83,20 @@ class Profesor {
         }
     }
 
+    public function eliminarSolicitud($id,$n){
+        //print_r($id);
+        //exit();
+
+        $this->db->query("DELETE FROM tipoPermiso_has_usuario WHERE idPermisoUsuario = :id");
+            $this->db->bind(':id',$id);
+
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 
 

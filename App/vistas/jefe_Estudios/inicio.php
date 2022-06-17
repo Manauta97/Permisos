@@ -33,9 +33,9 @@
        
                 <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[2])):?>
                         <td>
-                            <a href="<?php echo RUTA_URL?>/JefeEstudios/aceptarPermiso/<?php echo $permisoUsu->idPermisoUsuario ?>">Aceptar</a>
+                            <a class="btn btn-success" href="<?php echo RUTA_URL?>/JefeEstudios/aceptarPermiso/<?php echo $permisoUsu->idPermisoUsuario ?>">Aceptar</a>
                             &nbsp;&nbsp;&nbsp;
-                            <a href="<?php echo RUTA_URL?>/JefeEstudios/denegarPermiso/<?php echo $permisoUsu->idPermisoUsuario ?>">Denegar</a>
+                            <a class="btn btn-danger" href="<?php echo RUTA_URL?>/JefeEstudios/denegarPermiso/<?php echo $permisoUsu->idPermisoUsuario ?>">Denegar</a>
                             &nbsp;&nbsp;&nbsp;
                         </td>
                 <?php endif ?>

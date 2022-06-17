@@ -48,9 +48,9 @@
                     
 <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
                     <td>
-                        <a href="<?php echo RUTA_URL?>/admins/editar/<?php echo $uruario->id_usuario ?>">Editar</a>
+                        <a class="btn btn-primary" href="<?php echo RUTA_URL?>/admins/editar/<?php echo $uruario->id_usuario ?>">Editar</a>
                         &nbsp;&nbsp;&nbsp;
-                        <a href="<?php echo RUTA_URL?>/admins/borrar/<?php echo $uruario->id_usuario ?>">Borrar</a>
+                        <a class="btn btn-danger" href="<?php echo RUTA_URL?>/admins/borrar/<?php echo $uruario->id_usuario ?>">Borrar</a>
                         &nbsp;&nbsp;&nbsp;
                     </td>
 <?php endif ?>
@@ -87,9 +87,9 @@
 
             <?php if (tienePrivilegios($datos['usuarioSesion']->id_rol,[1])):?>
                 <td>
-                    <a href="<?php echo RUTA_URL?>/admins/editarPermiso/<?php echo $tpermiso->idTipoPermiso ?>">Editar</a>
+                    <a class="btn btn-primary" href="<?php echo RUTA_URL?>/admins/editarPermiso/<?php echo $tpermiso->idTipoPermiso ?>">Editar</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a href="<?php echo RUTA_URL?>/admins/borrarP/<?php echo $tpermiso->idTipoPermiso ?>">Borrar</a>
+                    <a class="btn btn-danger" href="<?php echo RUTA_URL?>/admins/borrarP/<?php echo $tpermiso->idTipoPermiso ?>">Borrar</a>
                 </td>
         <?php endif ?>
         <?php endforeach ?>

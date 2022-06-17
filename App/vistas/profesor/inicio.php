@@ -11,7 +11,7 @@
                 <th>Fecha fin permiso</th>
                 <th>Observaciones</th>
                 <th>Estado</th>
-                <th>Subir documento</th>  
+                <th>Subir documento</th> 
             </tr>
         </thead>
         <tbody>
@@ -51,9 +51,17 @@
                         <form action="<?php echo RUTA_URL?>/Profesores/borrarFoto/<?php echo $permisoProp->nombreDocumento ?>" method="post">
                         
                             <!--  <input type="text" name="photo" id="photo" value="<?php echo $permisoProp->nombreDocumento ?>" disabled>-->
-                            <input type="submit" class="btn btn-danger" value="borrar" id="botonBorrar" onclick="return confirm('¿Seguro que quieres borrar el documento?');">
+                            <input type="submit" class="btn btn-danger" value="Borrar documento" id="botonBorrar" onclick="return confirm('¿Seguro que quieres borrar el documento?');">
                         </form>
                     <?php   } ?>  
+                    </td>
+
+
+                    <td>
+                        <form action="<?php echo RUTA_URL?>/Profesores/cancelarSolicitud/<?php echo $permisoProp->idPermisoUsuario ?>/<?php echo $permisoProp->nombreDocumento ?>" method="post">
+ 
+                            <input type="submit" class="btn btn-warning" value="Cancelar solicitud" id="botonBorrar" onclick="return confirm('¿Seguro que quieres cancelar la solicitud?');">
+                        </form>
                     </td>
                 </tr>
             <?php endforeach ?>
