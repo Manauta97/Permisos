@@ -84,17 +84,17 @@ insert into usuarios values
 -- -----------------------------------------------------
 -- Table `permisos`.`documento`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `permisos`.`documento` (
+/*CREATE TABLE IF NOT EXISTS `permisos`.`documento` (
   `nombreDocumento` VARCHAR(300) NOT NULL,
-  `ruta` VARCHAR(350) NOT NULL,
+  
   PRIMARY KEY (`nombreDocumento`))
 ENGINE = InnoDB;
 
 insert into documento values 
-('doc1','ruta/doc/1'),
-('doc2','ruta/doc/2'),
-('doc3','ruta/doc/3');
-
+('doc1'),
+('doc2'),
+('doc3');
+*/
 -- -----------------------------------------------------
 -- Table `permisos`.`tipoPermiso_has_usuario`
 -- -----------------------------------------------------
@@ -103,14 +103,14 @@ CREATE TABLE IF NOT EXISTS `permisos`.`tipoPermiso_has_usuario` (
   `idTipoPermiso` INT NOT NULL,
   `id_usuario` INT NOT NULL,
   `id_estado` INT NOT NULL,
-  `nombreDocumento` VARCHAR(300) NOT NULL,
+  `nombreDocumento` VARCHAR(300)NULL,
   `fechaInicio` DATE NULL,
   `fechaFin` DATE NULL,
+  `observaciones` VARCHAR(300) NULL,
   PRIMARY KEY (`idPermisoUsuario`),
   INDEX `fk_tipoPermiso_has_usuario_usuario1_idx` (`id_usuario` ASC) VISIBLE,
   INDEX `fk_tipoPermiso_has_usuario_tipoPermiso1_idx` (`idTipoPermiso` ASC) VISIBLE,
   INDEX `fk_tipoPermiso_has_usuario_estados1_idx` (`id_estado` ASC) VISIBLE,
-  INDEX `fk_tipoPermiso_has_usuario_documento1_idx` (`nombreDocumento` ASC) VISIBLE,
   CONSTRAINT `fk_tipoPermiso_has_usuario_tipoPermiso1`
     FOREIGN KEY (`idTipoPermiso`)
     REFERENCES `permisos`.`tipoPermiso` (`idTipoPermiso`)
@@ -118,25 +118,20 @@ CREATE TABLE IF NOT EXISTS `permisos`.`tipoPermiso_has_usuario` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tipoPermiso_has_usuario_usuario1`
     FOREIGN KEY (`id_usuario`)
-    REFERENCES `permisos`.`usuario` (`id_usuario`)
+    REFERENCES `permisos`.`usuarios` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tipoPermiso_has_usuario_estados1`
     FOREIGN KEY (`id_estado`)
     REFERENCES `permisos`.`estados` (`id_estado`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tipoPermiso_has_usuario_documento1`
-    FOREIGN KEY (`nombreDocumento`)
-    REFERENCES `permisos`.`documento` (`nombreDocumento`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 insert into tipoPermiso_has_usuario values 
-(1,1,2,3,'doc1','2022-05-31','2022-06-05'),
-(2,2,2,3,'doc2','2022-05-15','2022-05-31'),
-(3,2,4,3,'doc3','2022-05-15','2022-05-31');
+(1,1,2,3,'','2022-05-31','2022-06-05',''),
+(2,2,2,3,'','2022-05-15','2022-05-31',''),
+(3,2,4,3,'','2022-05-15','2022-05-31','3 días de permisos laborales');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
