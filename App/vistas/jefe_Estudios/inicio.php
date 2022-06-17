@@ -7,6 +7,7 @@
             <tr>
                 <th>Descripcion Permiso</th>
                 <th>Profesor Solicitante</th>
+                <th>Observaciones</th>
                 <th>Documento</th>
                 <th>Fecha inicio permiso</th>
                 <th>Fecha fin permiso</th>
@@ -22,6 +23,7 @@
                 <tr>
                     <td><?php echo $permisoUsu->descripcionPermiso ?></td>
                     <td><?php echo $permisoUsu->nombre ." " . $permisoUsu->apellidos?></td>
+                    <td><?php echo $permisoUsu->observaciones?></td>
                     <td>
                         <?php if ($permisoUsu->nombreDocumento==''){echo '';} else {?> <img width="200" height="200" class="rounded img-fluid" src="<?php echo RUTA_ImgDatos.$permisoUsu->id_usuario."/".$permisoUsu->nombreDocumento ?>"><?php ;}?>
                     </td>
