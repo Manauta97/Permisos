@@ -130,7 +130,7 @@ ENGINE = InnoDB;
 
 insert into tipoPermiso_has_usuario values 
 (1,1,2,3,'','2022-05-31','2022-06-05',''),
-(2,2,2,3,'','2022-05-15','2022-05-31',''),
+(2,2,2,3,'','2022-05-15','2022-05-31','3 días de permisos laborales'),
 (3,2,4,3,'','2022-05-15','2022-05-31','3 días de permisos laborales');
 
 SET SQL_MODE=@OLD_SQL_MODE;
