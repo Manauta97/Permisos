@@ -9,6 +9,7 @@
                 <th>Documento</th>
                 <th>Fecha inicio permiso</th>
                 <th>Fecha fin permiso</th>
+                <th>Observaciones</th>
                 <th>Estado</th>
                 <th>Subir documento</th>  
             </tr>
@@ -22,6 +23,7 @@
                     </td>
                     <td><?php echo $permisoProp->fechaInicio ?></td>
                     <td><?php echo $permisoProp->fechaFin ?></td>
+                    <td><?php echo $permisoProp->observaciones ?></td>
                     <td><?php echo $permisoProp->nombreEstado ?></td>
                     <td> 
                         <div>

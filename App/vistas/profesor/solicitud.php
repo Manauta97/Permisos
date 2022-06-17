@@ -26,6 +26,10 @@
                 <?php endforeach ?>
             </select>
         </div>
+        <div class="mt-3 mb-3">
+            <label for="observa">Observaciones: <sup>*</sup></label>
+            <input type="text" name="observa" id="observa" class="form-control form-control-lg">
+        </div>
         <input type="submit" class="btn btn-success" value="Agregar">
     </form>
     

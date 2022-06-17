@@ -14,7 +14,7 @@ class Profesor {
 
     public function obtenerPermisosPropios($idUsuario){
 
-        $sql = "SELECT idPermisoUsuario, usuarios.id_usuario, descripcionPermiso, nombreDocumento, fechaInicio, fechaFin, nombreEstado  FROM tipoPermiso_has_usuario 
+        $sql = "SELECT idPermisoUsuario, usuarios.id_usuario, descripcionPermiso, nombreDocumento,observaciones, fechaInicio, fechaFin, nombreEstado  FROM tipoPermiso_has_usuario 
         inner join tipoPermiso
         on tipoPermiso_has_usuario.idTipoPermiso = tipoPermiso.idTipoPermiso
         inner join usuarios
@@ -31,8 +31,9 @@ class Profesor {
     
     public function agregarSolicitud($datos){
 
-        $sql = "INSERT INTO tipoPermiso_has_usuario (idTipoPermiso,id_usuario,id_estado,nombreDocumento,fechaInicio,fechaFin) 
-        VALUES (:idTipoPermiso, :id_usuario, :id_estado, :nombreDocumento, :fechaInicio, :fechaFin)";
+       
+        $sql = "INSERT INTO tipoPermiso_has_usuario (idTipoPermiso,id_usuario,id_estado,nombreDocumento,fechaInicio,fechaFin,observaciones) 
+        VALUES (:idTipoPermiso, :id_usuario, :id_estado, :nombreDocumento, :fechaInicio, :fechaFin, :observaciones)";
 
         $this->db->query($sql);
 
@@ -45,6 +46,7 @@ class Profesor {
         $this->db->bind(':nombreDocumento',$datos['nombreDocumento']);
         $this->db->bind(':fechaInicio',$datos['fechaInicio']);
         $this->db->bind(':fechaFin',$datos['fechaFin']);
+        $this->db->bind(':observaciones',$datos['observaciones']);
 
         //ejecutamos
         if($this->db->execute()){

@@ -42,6 +42,7 @@ class Profesores extends Controlador{
                 'nombreDocumento' => trim(''),
                 'fechaInicio' => trim($_POST['fIni']),
                 'fechaFin' => trim($_POST['fFin']),
+                'observaciones' => trim($_POST['observa']),
                 
             ];
 
@@ -59,7 +60,7 @@ class Profesores extends Controlador{
                 'nombreDocumento' => '',
                 'fechaInicio' => '',
                 'fechaFin' => '',
-                
+                'observaciones' => '',
                     
             ];
 
@@ -133,9 +134,6 @@ class Profesores extends Controlador{
         }        
 
     }
-
-
-
 
 
 }
